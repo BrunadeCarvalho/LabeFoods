@@ -1,9 +1,9 @@
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { BoxContainer, Inputs } from '../styled';
 
 export const EmailInput = ({validacao, value, onChange}) =>{
     return(
-        <Box validacao={!validacao}
+        <BoxContainer validacao={!validacao}
             component="form"
             sx={{
                 '& .MuiTextField-root': { m: 1, width: '328px'},
@@ -11,7 +11,7 @@ export const EmailInput = ({validacao, value, onChange}) =>{
             noValidate
             autoComplete="off"
         >
-            <TextField
+            <Inputs
                 required
                 id="outlined-required" 
                 label="E-mail" 
@@ -25,6 +25,6 @@ export const EmailInput = ({validacao, value, onChange}) =>{
             {!validacao ? (
                 <p> E-mail inválido </p>
             ): undefined }
-        </Box>
+        </BoxContainer>
     )
 }

@@ -1,22 +1,19 @@
-import axios from "axios"
-import { useContext, useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useContext, } from "react"
+import { useNavigate, } from "react-router-dom"
 import { BotaoLaranja } from "../../Components/Botoes/styled"
-import { CardItens, DivFundoResultado, InformacaoProduto, Preco } from "../../Components/Cards/Style"
-import { Footer, FooterComponents } from "../../Components/Footer/Footer"
-import { BASE_URL } from "../../Constants"
+import { CardItens, InformacaoProduto, Preco } from "../../Components/Cards/Style"
+import {  FooterComponents } from "../../Components/Footer/Footer"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
-import { useRequestData } from "../../Hook/useRequestData"
-import { DivFundo } from "../Login/styled"
 import { DivFundoPaginaFooter, TextoCarrinho } from "./styled"
 
-export const MeuCarrinhoPage=()=>{
+export const MeuCarrinhoPage=(props)=>{
+
     const navigate=useNavigate()
 
     const {addProduto, setAddProduto, }=useContext(GlobalStateContext)
 
     const deletarProdutos = (produto) =>{
-        const novoCarrinho = [...carrinho]
+        const novoCarrinho = [...addProduto]
 
         const deletar = novoCarrinho.findIndex((p)=> p === produto)
         novoCarrinho.splice(deletar, 1)
@@ -31,8 +28,9 @@ export const MeuCarrinhoPage=()=>{
                     <p>{item.name}</p>
                     <span>{item.description}</span>
                     <Preco>
-{/*                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
- */}                        <button onClick={()=>deletarProdutos(item)}>Remover</button>
+                        <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+                        <span> {item.quantity} </span>
+                        <button onClick={()=>deletarProdutos(item)}>Remover</button>
                     </Preco>
                 </InformacaoProduto>
             </CardItens>

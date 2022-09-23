@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import {BsEyeFill} from 'react-icons/bs'
 import {BsEyeSlashFill} from 'react-icons/bs'
-import { BoxContainer } from '../styled';
+import { BoxContainer, Inputs } from '../styled';
 
 export const PasswordInput = ({validacao, value, onChange}) =>{
     const [show, setShow] = useState(false)
@@ -21,7 +21,7 @@ export const PasswordInput = ({validacao, value, onChange}) =>{
             noValidate
             autoComplete="off"
         >
-            <TextField
+            <Inputs
                 required
                 id="outlined-required" 
                 label="Senha" 

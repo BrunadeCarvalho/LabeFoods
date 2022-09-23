@@ -9,10 +9,28 @@ import {  goToMeuCarrinhoPage } from "../../Routes/Coordinator"
 import { CardItens, CardRestaurante, DivCarregando, DivFundoResultado, InformacaoProduto, Preco } from "../../Components/Cards/Style"
 
 export const Resultado=()=>{
-    const navigate=useNavigate();
-
     const [detalhesRestaurante, setDetalhesRestaurante]=useState([])
     const {addProduto, setAddProduto, isLoading, setIsLoading, setInfoRestaurante, infoRestaurante}=useContext(GlobalStateContext)
+    
+    const adicionandoProdutoNoCarrinho = item => {
+        let procurarProduto = addProduto.find(elem => elem.id === item.id)
+
+        if(procurarProduto){
+            procurarProduto.quantity += 1
+            setAddProduto(addProduto)
+            localStorage.setItem("carrinho", JSON.stringify(addProduto))
+        } else {
+            item = {
+                ...item,
+                quantity: 1
+            }
+            const newCarrinho = [...addProduto, item]
+            setAddProduto(newCarrinho)
+            localStorage.setItem("carrinho", JSON.stringify(newCarrinho))
+        }
+    }
+    const navigate=useNavigate();
+
 
     const token = localStorage.getItem("token")
     const headers={
@@ -40,6 +58,7 @@ export const Resultado=()=>{
         obterRestaurantes()
     }, [])
 
+
      detalhesRestaurante.map((item, index)=>{
         return (
             <>
@@ -50,7 +69,7 @@ export const Resultado=()=>{
                         <span>{item.description}</span>
                         <Preco>
                             <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                            <button onClick={()=> setAddProduto([...addProduto, item])}>Adicionar</button>
+                            <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
                         </Preco>
                     </InformacaoProduto>
                 </CardItens>
@@ -78,7 +97,7 @@ export const Resultado=()=>{
                         <span>{item.description}</span>
                         <Preco>
                             <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                            <button onClick={()=> setAddProduto([...addProduto, item])}>Adicionar</button>
+                            <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
                         </Preco>
                     </InformacaoProduto>
                 </CardItens>
@@ -106,14 +125,13 @@ export const Resultado=()=>{
                         <span>{item.description}</span>
                         <Preco>
                             <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                            <button onClick={()=> setAddProduto([...addProduto, item])}>Adicionar</button>
+                            <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
                         </Preco>
                     </InformacaoProduto>
                 </CardItens>
             </>
         )
     })
-    console.log(addProduto)
 
     const acompanhamentos=detalhesRestaurante.filter((item, index)=>{
         if (item.category === "Acompanhamento"){
@@ -135,7 +153,7 @@ export const Resultado=()=>{
                         <span>{item.description}</span>
                     <Preco>
                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        <button onClick={()=> setAddProduto([...addProduto, item])}>Adicionar</button>
+                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
                     </Preco>
                     </InformacaoProduto>
                 </CardItens>
@@ -163,7 +181,7 @@ export const Resultado=()=>{
                         <span>{item.description}</span>
                     <Preco>
                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        <button onClick={()=> setAddProduto([...addProduto, item])}>Adicionar</button>
+                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
                     </Preco>
                     </InformacaoProduto>
                 </CardItens>

@@ -25,7 +25,7 @@ export const LoginPage=()=>{
     const [emailValido, setEmailValido]=useState(true)
     const [passwordValido, setPasswordValido]=useState(true)
 
-    const onSubmit = (event)=>{
+    const onSubbmit = (event)=>{
         event.preventDefault();
         //regex:
         setEmailValido(validarEmail(form.email))
@@ -43,8 +43,8 @@ export const LoginPage=()=>{
         <DivFundo>
             <img src={ImagemLogin} alt="logo"/>
             <DivFormulario>
-                <p>Entrar</p>
-                <form onSubmit={onSubmit}>
+                <p className="entrar">Entrar</p>
+                <form onSubmit={onSubbmit}>
                     <EmailInput 
                         value={form.email}
                         onChange={onChangeInputs}
@@ -58,9 +58,9 @@ export const LoginPage=()=>{
                     />
                     <DivBotoes>
                         <BotaoLaranja type="submit"> Entrar </BotaoLaranja>
-                        <BotaoCadastrar onClick={()=>goToSignupPage(navigate)}>  Não possui cadastro? Clique aqui </BotaoCadastrar>
                     </DivBotoes>
                 </form>
+                <BotaoCadastrar onClick={(e)=> goToSignupPage(navigate)}>  Não possui cadastro? Clique aqui </BotaoCadastrar>
             </DivFormulario>
         </DivFundo>
     )

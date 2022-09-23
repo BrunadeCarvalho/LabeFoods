@@ -2,7 +2,7 @@ import { useState } from "react"
 import { GlobalStateContext } from "./GlobalStateContext"
 
 export const GlobalState = (props) =>{
-    const [addProduto, setAddProduto]=useState(/* JSON.parse(localStorage.getItem("carrinho")) || */ [])
+    const [addProduto, setAddProduto]=useState(JSON.parse(localStorage.getItem("carrinho")) || [])
     const [isLoading, setIsLoading]=useState(false)
     const [busca, setBuscar] = useState("")
     const [infoRestaurante, setInfoRestaurante]=useState()

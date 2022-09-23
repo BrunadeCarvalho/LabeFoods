@@ -22,7 +22,7 @@ export const DivFormulario=styled.div`
     justify-content: center;
     align-items: center;
 
-    p{
+    .entrar{
         font-family: 'Roboto', sans-serif;
         width: 296px;
         height: 18px;
@@ -34,6 +34,8 @@ export const DivFormulario=styled.div`
         letter-spacing: -0.39px;
         text-align: center;
         color: #000;
+        margin-bottom: 16px;
+        padding: 12px 32px;
     }
 `
 
