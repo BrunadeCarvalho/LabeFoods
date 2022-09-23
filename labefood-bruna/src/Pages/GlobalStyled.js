@@ -7,7 +7,8 @@ export const GlobalStyled = createGlobalStyle`
     }
 
     :root{
-        --dark-peach: #e86e5a
+        --dark-peach: #e86e5a;
+        --greyish: #b8b8b8;
     }
 
 `

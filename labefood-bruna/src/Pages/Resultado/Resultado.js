@@ -9,8 +9,7 @@ import {  goToMeuCarrinhoPage } from "../../Routes/Coordinator"
 import { CardItens, CardRestaurante, DivCarregando, DivFundoResultado, InformacaoProduto, Preco } from "../../Components/Cards/Style"
 
 export const Resultado=()=>{
-    const [detalhesRestaurante, setDetalhesRestaurante]=useState([])
-    const {addProduto, setAddProduto, isLoading, setIsLoading, setInfoRestaurante, infoRestaurante}=useContext(GlobalStateContext)
+    const {addProduto, setAddProduto, isLoading, setIsLoading, setInfoRestaurante, infoRestaurante, detalhesRestaurante, setDetalhesRestaurante}=useContext(GlobalStateContext)
     
     const adicionandoProdutoNoCarrinho = item => {
         let procurarProduto = addProduto.find(elem => elem.id === item.id)
@@ -30,7 +29,7 @@ export const Resultado=()=>{
         }
     }
     const navigate=useNavigate();
-
+    const param = useParams()
 
     const token = localStorage.getItem("token")
     const headers={
@@ -38,8 +37,6 @@ export const Resultado=()=>{
             auth: token
         }
     }
- 
-    const param = useParams()
 
     const obterRestaurantes=()=>{
         setIsLoading(true)
@@ -48,12 +45,13 @@ export const Resultado=()=>{
             setIsLoading(false)
             setDetalhesRestaurante(response.data.restaurant.products)
             setInfoRestaurante(response.data.restaurant)
+            localStorage.setItem("restaurante", JSON.stringify(response.data.restaurant)
+            )
+
         }).catch((error)=>{
             navigate("/")
         })
     }
-    
-
     useEffect(()=>{
         obterRestaurantes()
     }, [])
@@ -208,8 +206,8 @@ export const Resultado=()=>{
                     <span className="categoria">{infoRestaurante?.category}</span>
                     <div>
                         <span className="tempo">{infoRestaurante?.deliveryTime} min</span>
-                        <span className="delivery"> {infoRestaurante?.shipping.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</span>
-                    </div>
+{/*                         <span className="delivery"> {infoRestaurante?.shipping.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</span>
+ */}                    </div>
                         <span className="endereco"> {infoRestaurante?.address} </span>
                 </CardRestaurante>
                 <div>

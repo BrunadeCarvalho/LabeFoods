@@ -1,16 +1,16 @@
 import styled from "styled-components"
 
 export const CardItens=styled.div`
-    display: flex;
-    max-width: 328px;
-    max-height: 112px;
-    margin: 7px 0 0;
-    border-radius: 8px;
-    border: solid 1px #b8b8b8;
-    margin: 5px 20px;
+  width: 328px;
+  height: 112px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  border: solid 1px #b8b8b8;
+  display: flex;
+
     img{
         width: 97px;
-        height: 112px;
+        height: 112.6px;
         object-fit: cover;
     }
 `
@@ -22,15 +22,74 @@ export const InformacaoProduto=styled.div`
     p{
         width: 166px;
         height: 18px;
-        margin: 18px 49px 0 8px;
-        font-family: 'Roboto', sans-serif;
+        margin-left: 6px;
+        font-family: Roboto;
         font-size: 16px;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
         letter-spacing: -0.39px;
-        color: var(--dark-peach)    
+        color: var(--dark-peach);  
+    }
+
+    span{
+        font-family: 'Roboto', sans-serif;
+        width: 198px;
+        height: 30px;
+        margin: 6px 17px 6px 8px;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.34px;
+        color: #b8b8b8;
+    }
+
+    .nome{
+        width: 166px;
+        height: 18px;
+        margin-left: 6px;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        color: var(--dark-peach);   
+    }
+
+    .descricao{
+        font-family: 'Roboto', sans-serif;
+        width: 198px;
+        height: 30px;
+        margin: 6px 17px 6px 8px;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.34px;
+        color: #b8b8b8;
+    }
+
+    .quantidade{
+        width: 33px;
+        max-height: 33px;
+        margin-left: 197px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border: solid 1px var(--dark-peach);
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        text-align: center;
+        color: var(--dark-peach);
+        padding: 5px 0;
     }
 
     span{
@@ -70,7 +129,7 @@ export const Preco=styled.div`
     button{
         width: 90px;
         height: 31px;
-        margin: 9px 0 0 17px;
+        margin: 5px 0 0 17px;
         padding: 8px 20.5px 9px 21.5px;
         border-top-left-radius: 8px;
         border-bottom-right-radius: 8px;
