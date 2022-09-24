@@ -6,7 +6,7 @@ import { PasswordInput } from "../../Components/inputs/password"
 import { BASE_URL, validarEmail, validarPassword } from "../../Constants"
 import { useFormulario } from "../../Hook/formulario"
 import { goToSignupPage } from "../../Routes/Coordinator"
-import { BotaoCadastrar, BotaoEntrar, DivBotoes, DivFormulario, DivFundo } from "./styled"
+import { BotaoCadastrar, DivBotoes, DivFormulario, DivFundo } from "./styled"
 import ImagemLogin from '../../img/logo-future-eats-invert@3x.png'
 import { BotaoLaranja } from "../../Components/Botoes/styled"
 

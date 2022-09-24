@@ -45,6 +45,7 @@ export const DivBotoes=styled.div`
     justify-content: center;
     align-items: center;
     
+    
 `
 export const BotaoCadastrar=styled.button`
   width: 328px;

@@ -6,7 +6,7 @@ export const BoxContainer=styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    margin: 8px 0 0;
+    margin: 8px 0 8px 0;
 
     .icone{
         position: absolute;
