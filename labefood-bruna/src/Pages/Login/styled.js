@@ -38,7 +38,6 @@ export const DivFormulario=styled.div`
         padding: 12px 32px;
     }
 `
-
 export const DivBotoes=styled.div`
     display: flex;
     flex-direction: column;

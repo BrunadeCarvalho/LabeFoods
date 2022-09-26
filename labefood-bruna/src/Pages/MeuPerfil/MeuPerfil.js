@@ -1,11 +1,15 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FooterComponents } from "../../Components/Footer/Footer"
 import { BASE_URL } from "../../Constants"
-import { DivFundoPaginaFooter } from "../MeuCarrinho/styled"
+import { DivBotao, EnderecoStyled, FundoStyled, HistoricoPedidos } from "./styled"
+import {MdOutlineModeEdit} from  'react-icons/md'
+import { goToCadastroPage } from "../../Routes/Coordinator"
+import { useNavigate } from "react-router-dom"
 
 export const MeuPerfilPage=()=>{
     const [dadosCliente, setDadosCliente]=useState("")
+    const navigate=useNavigate()
 
     const token = localStorage.getItem("token")
 
@@ -17,16 +21,33 @@ export const MeuPerfilPage=()=>{
 
     const dadosDoPerfil=()=>{
         axios.get(`${BASE_URL}/profile`, headers).then((response)=>{
-            setDadosCliente(response.data)
+            setDadosCliente(response.data.user)
         })
     }
+    useEffect(()=>{
+        dadosDoPerfil()
+    })
+
 
     return(
-        <DivFundoPaginaFooter>
-            <h1> Meu Perfil </h1>
-
+        <FundoStyled>
+            <p className="meuPerfil">Meu perfil</p>
+            <p className="nome">{dadosCliente.name}</p>
+            <p className="email">{dadosCliente.email}</p>
+            <p className="cpf">{dadosCliente.cpf}</p>
+            <EnderecoStyled>
+                <DivBotao>
+                    <button onClick={()=>goToCadastroPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
+                </DivBotao>
+                <div>
+                    <span className="titulo">Endereço cadastrado:</span>
+                    <p className="endereco">{dadosCliente.address}</p>
+                </div>
+            </EnderecoStyled>
+            <HistoricoPedidos>
+                <p className="tituloHistorico">Historico de Pedidos</p>
+            </HistoricoPedidos>
             <FooterComponents />                
-
-        </DivFundoPaginaFooter>
+        </FundoStyled>
     )
 }

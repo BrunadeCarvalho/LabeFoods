@@ -65,17 +65,24 @@ export const SignUpPage=()=>{
                         validacao={emailValido}
                     />
 
+                    <CPFInput
+                        value={form.cpf}
+                        onChange={onChangeInputs}
+                        validacao={cpfValido}
+                    />
+
                     <PasswordInput
                         value={form.password}
                         onChange={onChangeInputs}
                         validacao={passwordValido}
                     />
 
-                    <CPFInput
-                        value={form.cpf}
+{/*                     <PasswordInput
+                        value={form.password}
                         onChange={onChangeInputs}
-                        validacao={cpfValido}
-                    />
+                        validacao={passwordValido}
+                    /> */}
+
                     <BotaoLaranja type="submit"> Criar </BotaoLaranja>
                 </form>
             </DivFormulario>

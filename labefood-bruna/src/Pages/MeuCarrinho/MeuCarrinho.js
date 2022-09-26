@@ -1,8 +1,10 @@
+import axios from "axios"
 import { useContext, useEffect, useState, } from "react"
 import { useNavigate, } from "react-router-dom"
 import { BotaoLaranja } from "../../Components/Botoes/styled"
 import { CardItens, InformacaoProduto, Preco } from "../../Components/Cards/Style"
 import {  FooterComponents } from "../../Components/Footer/Footer"
+import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { DadosRestaurante, DivFundoPaginaFooter, DivValorTotal, Frete, PagamentoStyled, TextoCarrinho } from "./styled"
 
@@ -11,6 +13,7 @@ export const MeuCarrinhoPage=(props)=>{
     const navigate=useNavigate()
     const {addProduto, setAddProduto, infoRestaurante }=useContext(GlobalStateContext)
     const [valorTotal, setValorTotal]=useState(0)
+    const [criarPedido, setCriarPedido]=useState([])
 
     const deletarProdutos = (produto) =>{
         const novoCarrinho = [...addProduto]
@@ -51,6 +54,34 @@ export const MeuCarrinhoPage=(props)=>{
         setValorTotal(valorFinal)
         localStorage.setItem("carrinho", JSON.stringify(addProduto))
     })
+
+    const body={
+        "products": [{
+            "id": "",
+            "quantity": ""
+        }, {
+            "quantity": "",
+            "id": ""
+        }],
+        "paymentMethod": ""
+    }
+
+    const token = localStorage.getItem("token")
+    const headers={
+        headers:{
+            auth: token
+        }
+    }
+
+    const placeOrder=()=>{
+        axios.post(`${BASE_URL}/restaurants/:restaurantId/order`, body, headers)
+        .then((response)=>{
+            setCriarPedido()
+            alert("Pedido Criado com sucesso")
+        }).catch((error)=>{
+            alert ("Pedido não realizado")
+        })
+    }
 
     return(
         <DivFundoPaginaFooter>
@@ -93,7 +124,7 @@ export const MeuCarrinhoPage=(props)=>{
                 <input type="radio"  name="fav_language"/> 
                 <label>Cartão de crédito</label>
             </PagamentoStyled>
-            <BotaoLaranja>Confirmar</BotaoLaranja>
+            <BotaoLaranja onClick={placeOrder}>Confirmar</BotaoLaranja>
             <FooterComponents />
         </DivFundoPaginaFooter>
 
