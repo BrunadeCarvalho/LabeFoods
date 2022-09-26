@@ -81,6 +81,13 @@ export const DadosRestaurante=styled.div`
     flex-direction: column;
     width: 360px;
 
+    img{
+        width: 328px;
+        height: 120px;
+        margin: 17px 16px 12px;
+        object-fit: contain;
+    }
+
     .estabelecimento{
         width: 328px;
         height: 18px;
@@ -140,4 +147,31 @@ export const Frete=styled.div`
         text-align: right;
         color: #000;
             }
+`
+
+export const PagamentoStyled=styled.div`
+    display: flex;
+    width: 360px;
+
+    input{
+        width: 24px;
+        height: 24px;
+        margin: 8px 8px 8px 16px;
+        object-fit: contain;
+    }
+
+    label{
+        width: 296px;
+        height: 18px;
+        margin: 11px 16px 11px 8px;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        color: #000;
+    }
+
 `
