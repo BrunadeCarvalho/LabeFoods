@@ -28,7 +28,7 @@ export const MeuCarrinhoPage=(props)=>{
                     <p className="nome">{item.name}</p>
                     <p className="descricao">{item.description}</p>
                     <Preco>
-                        <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+                        <span> R$ {item.price} </span>
                         <button onClick={()=>deletarProdutos(item)}>Remover</button>
                     </Preco>
                 </InformacaoProduto>
@@ -54,7 +54,7 @@ export const MeuCarrinhoPage=(props)=>{
                 <p className="endereco">{infoRestaurante?.address}</p>
                 <p className="entrega">{infoRestaurante?.deliveryTime} min</p>
             </DadosRestaurante>
-            {carrinho. length > 0 ?
+            {carrinho.length > 0 ?
             <DivFundoPaginaFooter>
                 {carrinho}
             </DivFundoPaginaFooter>
