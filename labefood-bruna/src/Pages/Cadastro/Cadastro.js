@@ -8,9 +8,11 @@ import { ComplementoInput } from "../../Components/inputs/Endereco/complemento"
 import { EnderecoInput } from "../../Components/inputs/Endereco/endereco"
 import { EstadoInput } from "../../Components/inputs/Endereco/estado"
 import { NumeroInput } from "../../Components/inputs/Endereco/numero"
-import { BASE_URL, validarEndereco } from "../../Constants"
+import { BASE_URL } from "../../Constants"
 import { useFormulario } from "../../Hook/formulario"
-import { BotaoEntrar, DivFormulario, DivFundo } from "../Login/styled"
+import { DivFormulario, DivFundo } from "../Login/styled"
+import {IoIosArrowBack} from 'react-icons/io'
+import { HeaderStyled } from "../../Components/Header/Styled"
 
 export const CadastroPage=()=>{
     const navigate=useNavigate()
@@ -44,11 +46,18 @@ export const CadastroPage=()=>{
 
     }
 
+    const voltar=()=>{
+        navigate(-1)
+    }
+
 
     return(
         <DivFundo>
             <DivFormulario>
-                <p>Meu endereço</p>
+                <HeaderStyled>
+                    <button onClick={voltar}> <IoIosArrowBack size="24px" /></button>
+                    <p>Endereço</p>
+                </HeaderStyled>
                 <form onSubmit={cadastrarEndereco}>
                     <EnderecoInput 
                         value={form.street}

@@ -17,6 +17,6 @@ export const BotaoLaranja=styled.button`
   padding: 12px 0;
   border: none;
   cursor: pointer;
-  margin: 8px 0 16px;
+  margin: 8px 0 16px 8px;
 
 `
