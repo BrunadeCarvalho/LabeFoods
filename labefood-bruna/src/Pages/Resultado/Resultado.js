@@ -47,7 +47,6 @@ export const Resultado=()=>{
             setInfoRestaurante(response.data.restaurant)
             localStorage.setItem("restaurante", JSON.stringify(response.data.restaurant)
             )
-
         }).catch((error)=>{
             navigate("/")
         })
@@ -206,8 +205,8 @@ export const Resultado=()=>{
                     <span className="categoria">{infoRestaurante?.category}</span>
                     <div>
                         <span className="tempo">{infoRestaurante?.deliveryTime} min</span>
-{/*                         <span className="delivery"> {infoRestaurante?.shipping.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</span>
- */}                    </div>
+                        <span className="delivery"> {infoRestaurante?.shipping}</span>
+                    </div>
                         <span className="endereco"> {infoRestaurante?.address} </span>
                 </CardRestaurante>
                 <div>
