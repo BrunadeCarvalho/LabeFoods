@@ -70,7 +70,11 @@ export const MeuPerfilPage=()=>{
             <HistoricoPedidos>
                 <div>
                     <p className="tituloHistorico">Historico de Pedidos</p>
-                    <p>{renderizarPedidos}</p>
+                    {renderizarPedidos.length >0 ?
+                        <p>{renderizarPedidos}</p>
+                        :
+                        <p className="pedido">Você não realizou nenhum pedido</p>
+                    }
                 </div>
             </HistoricoPedidos>
             <FooterComponents />                
