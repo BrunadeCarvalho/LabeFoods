@@ -10,6 +10,7 @@ import { useFormulario } from "../../Hook/formulario"
 import { DivFormulario, DivFundo } from "../Login/styled"
 import ImagemLogin from '../../img/logo-future-eats-invert@3x.png'
 import { BotaoLaranja } from "../../Components/Botoes/styled"
+import { ConfirmarInput } from "../../Components/inputs/Confirmar"
 
 
 export const SignUpPage=()=>{
@@ -21,7 +22,8 @@ export const SignUpPage=()=>{
         name: "",
         email: "",
         cpf: "",
-        password: ""
+        password: "",
+        confirma: ""
     })
 
     // validação dos dados enviados de acordo com o regex dentro das constants
@@ -29,6 +31,7 @@ export const SignUpPage=()=>{
     const [passwordValido, setPasswordValido]=useState(true)
     const [nameValido, setNameValido]=useState(true)
     const [cpfValido, setCPFvalido]=useState(true)
+    const [confirmarValido, setConfirmarValido]=useState(true)
 
     const onSubmit = (event)=>{
         event.preventDefault();
@@ -37,14 +40,20 @@ export const SignUpPage=()=>{
         setPasswordValido(validarPassword(form.password))
         setNameValido(validarName(form.name))
         setCPFvalido(validarCPF(form.cpf))
+        setConfirmarValido(validarPassword(form.password))
+
+        if(form.password === form.confirma){
 
         axios.post(`${BASE_URL}/signup`,form)
         .then((response)=>{
             localStorage.setItem("token", response.data.token)
-            navigate("/cadastro")
+            navigate("/cadastro") 
         }).catch((error)=>{
             alert("Usuário já cadastrado")
         })
+    }else{
+        alert("as senhas não conferem")
+    }
     }
 
     return(
@@ -52,7 +61,7 @@ export const SignUpPage=()=>{
             <img src={ImagemLogin} alt="logo"/>
             <DivFormulario>
                 <p> Cadastrar </p>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit} >
                     <NameInput
                         value={form.name}
                         onChange={onChangeInputs}
@@ -77,11 +86,11 @@ export const SignUpPage=()=>{
                         validacao={passwordValido}
                     />
 
-{/*                     <PasswordInput
-                        value={form.password}
+                    <ConfirmarInput
+                        value={form.confirma}
                         onChange={onChangeInputs}
-                        validacao={passwordValido}
-                    /> */}
+                        validacao={confirmarValido}
+                    />
 
                     <BotaoLaranja type="submit"> Criar </BotaoLaranja>
                 </form>
