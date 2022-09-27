@@ -1,3 +1,4 @@
+import { style } from "@mui/system";
 import styled from "styled-components";
 
 export const FundoStyled=styled.div`
@@ -68,6 +69,29 @@ export const FundoStyled=styled.div`
     }
 `
 
+export const DadosStyled=styled.div`
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 360px;
+`
+
+export const BotaoEditar=styled.div`
+    width: 40px;
+    display: flex;
+    button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+`
+
+export const DadosPessoais=styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+`
+
 export const EnderecoStyled=styled.div`
     display: flex;
     flex-direction: row-reverse;
@@ -114,7 +138,6 @@ export const DivBotao=styled.div`
         cursor: pointer;
     }
 `
-
 
 export const HistoricoPedidos=styled.div`
     display: flex;

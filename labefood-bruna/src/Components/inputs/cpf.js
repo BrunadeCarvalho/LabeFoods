@@ -1,9 +1,9 @@
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { BoxContainer, Inputs } from '../styled';
 
 export const CPFInput = ({validacao, value, onChange}) =>{
     return(
-        <Box validacao={!validacao}
+        <BoxContainer validacao={!validacao}
             component="form"
             sx={{
                 '& .MuiTextField-root': { m: 1, width: '328px'},
@@ -11,7 +11,7 @@ export const CPFInput = ({validacao, value, onChange}) =>{
             noValidate
             autoComplete="off"
         >
-            <TextField               
+            <Inputs               
                 required
                 id="outlined-required"
                 label="CPF"
@@ -23,6 +23,6 @@ export const CPFInput = ({validacao, value, onChange}) =>{
             {!validacao ? (
                 <p> Insira os 11 dígitos corretamente </p>
             ): undefined }
-        </Box>
+        </BoxContainer>
     )
 }
