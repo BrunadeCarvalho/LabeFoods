@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 
 export const MeuPerfilPage=()=>{
-    const {dadosCliente, setDadosCliente}=useContext(GlobalStateContext)
+    const {dadosCliente }=useContext(GlobalStateContext)
 
     const navigate=useNavigate()
 

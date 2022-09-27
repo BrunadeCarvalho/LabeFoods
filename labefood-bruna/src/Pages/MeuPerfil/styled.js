@@ -111,6 +111,8 @@ export const EnderecoStyled=styled.div`
         line-height: normal;
         letter-spacing: -0.39px;
         color: #b8b8b8;
+        margin-left: 16px;
+
     }
 
     .endereco{
@@ -122,6 +124,8 @@ export const EnderecoStyled=styled.div`
         letter-spacing: -0.39px;
         color: #000;
         padding-top: 8px;
+        margin-left: 16px;
+
     }
 `
 export const DivBotao=styled.div`
