@@ -39,7 +39,7 @@ export const CadastroPage=()=>{
         axios.put(`${BASE_URL}/address`,form,headers).then((response)=>{
             setEndereco()
             alert("Endereço cadastrado com sucesso")
-            navigate("/feed")
+            navigate("/meu_perfil")
         }).catch((error)=>{
             alert("Endereço não cadastrado")
         })
