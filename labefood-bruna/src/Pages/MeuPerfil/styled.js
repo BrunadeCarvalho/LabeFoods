@@ -1,5 +1,58 @@
-import { style } from "@mui/system";
 import styled from "styled-components";
+
+export const RenderizarHistorico=styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 328px;
+    height: 102px;
+    margin: 7px 0 0;
+    border-radius: 8px;
+    border: solid 1px var(--greyish);
+
+    .nomeRestaurante{
+        width: 296px;
+        height: 18px;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        color: var(--dark-peach);
+        padding: 16px 16px 9px 16px;
+    }
+
+    .data{
+        width: 296px;
+        height: 18px;
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.29px;
+        color: #000;
+        padding: 0 16px 7px 16px;
+    }
+
+    .subtotal{
+        width: 296px;
+        height: 18px;
+        margin: 7px 0 0;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        color: #000;
+        padding: 0 16px 16px 16px;
+
+    }
+`
 
 export const FundoStyled=styled.div`
     display: flex;
@@ -111,6 +164,8 @@ export const EnderecoStyled=styled.div`
         line-height: normal;
         letter-spacing: -0.39px;
         color: #b8b8b8;
+        margin-left: 16px;
+
     }
 
     .endereco{
@@ -122,6 +177,8 @@ export const EnderecoStyled=styled.div`
         letter-spacing: -0.39px;
         color: #000;
         padding-top: 8px;
+        margin-left: 16px;
+
     }
 `
 export const DivBotao=styled.div`

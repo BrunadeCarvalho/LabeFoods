@@ -25,13 +25,14 @@ export const GlobalState = (props) =>{
 
     //MEU PERFIL:
     const dadosDoPerfil=()=>{
-        axios.get(`${BASE_URL}/profile`, headers).then((response)=>{
+        axios.get(`${BASE_URL}/profile`, headers)
+        .then((response)=>{
             setDadosCliente(response.data.user)
         })
     }
     useEffect(()=>{
         dadosDoPerfil()
-    })
+    }, [])
 
 
     const data ={addProduto, setAddProduto, isLoading, setIsLoading, busca, setBuscar, infoRestaurante, setInfoRestaurante, setDetalhesRestaurante, detalhesRestaurante, 
