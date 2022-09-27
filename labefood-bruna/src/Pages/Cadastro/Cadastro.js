@@ -43,7 +43,6 @@ export const CadastroPage=()=>{
         }).catch((error)=>{
             alert("Endereço não cadastrado")
         })
-
     }
 
     const voltar=()=>{

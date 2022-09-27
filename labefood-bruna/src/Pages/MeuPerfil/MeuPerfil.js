@@ -1,40 +1,31 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { FooterComponents } from "../../Components/Footer/Footer"
 import { BASE_URL } from "../../Constants"
-import { DivBotao, EnderecoStyled, FundoStyled, HistoricoPedidos } from "./styled"
+import { BotaoEditar, DadosPessoais, DadosStyled, DivBotao, EnderecoStyled, FundoStyled, HistoricoPedidos } from "./styled"
 import {MdOutlineModeEdit} from  'react-icons/md'
-import { goToCadastroPage } from "../../Routes/Coordinator"
+import { goToCadastroPage, goToEditarPage } from "../../Routes/Coordinator"
 import { useNavigate } from "react-router-dom"
+import { GlobalStateContext } from "../../Global/GlobalStateContext"
 
 export const MeuPerfilPage=()=>{
-    const [dadosCliente, setDadosCliente]=useState("")
+    const {dadosCliente, setDadosCliente}=useContext(GlobalStateContext)
+
     const navigate=useNavigate()
-
-    const token = localStorage.getItem("token")
-
-    const headers={
-        headers:{
-            auth: token
-        }
-    }
-
-    const dadosDoPerfil=()=>{
-        axios.get(`${BASE_URL}/profile`, headers).then((response)=>{
-            setDadosCliente(response.data.user)
-        })
-    }
-    useEffect(()=>{
-        dadosDoPerfil()
-    })
-
 
     return(
         <FundoStyled>
             <p className="meuPerfil">Meu perfil</p>
-            <p className="nome">{dadosCliente.name}</p>
-            <p className="email">{dadosCliente.email}</p>
-            <p className="cpf">{dadosCliente.cpf}</p>
+            <DadosStyled>
+                <BotaoEditar>
+                    <button onClick={()=>goToEditarPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
+                </BotaoEditar>
+                <DadosPessoais>
+                    <p className="nome">{dadosCliente.name}</p>
+                    <p className="email">{dadosCliente.email}</p>
+                    <p className="cpf">{dadosCliente.cpf}</p>
+                </DadosPessoais>
+            </DadosStyled>
             <EnderecoStyled>
                 <DivBotao>
                     <button onClick={()=>goToCadastroPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
