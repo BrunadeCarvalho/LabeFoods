@@ -75,7 +75,6 @@ export const FundoStyled=styled.div`
         letter-spacing: -0.39px;
         text-align: center;
         color: #000;
-        border-bottom: 1px solid #b8b8b8;
         margin-top: 13px;
         padding-bottom: 12px;
     }
@@ -150,10 +149,19 @@ export const EnderecoStyled=styled.div`
     flex-direction: row-reverse;
     width: 360px;
     height: 76px;
-    margin-top:16px;
     background-color: #eee;
-    padding: 16px 0 0 0;
+    margin-top:16px;
+
+
+`
+export const DivInformacoes=styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 16px 0;
     
+
+
     .titulo{
         height: 18px;
         font-family: Roboto;
@@ -164,8 +172,6 @@ export const EnderecoStyled=styled.div`
         line-height: normal;
         letter-spacing: -0.39px;
         color: #b8b8b8;
-        margin-left: 16px;
-
     }
 
     .endereco{
@@ -177,8 +183,7 @@ export const EnderecoStyled=styled.div`
         letter-spacing: -0.39px;
         color: #000;
         padding-top: 8px;
-        margin-left: 16px;
-
+        margin: auto;
     }
 `
 export const DivBotao=styled.div`

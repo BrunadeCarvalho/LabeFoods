@@ -25,6 +25,7 @@ export const DivFundoPaginaFooter=styled.div`
     align-items: center;
     max-width: 100vw;
     margin: auto;
+    padding-bottom: 10vh;
 
     h6{
         width: 328px;
