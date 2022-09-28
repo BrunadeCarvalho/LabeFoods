@@ -35,7 +35,6 @@ export const MeuPerfilPage=()=>{
     const renderizarPedidos=historico.map((item, index)=>{
         var data = new Date(item.createdAt)
 
-        console.log(data)
         return(
             <RenderizarHistorico key={index}>
                 <p className="nomeRestaurante">{item.restaurantName}</p>
@@ -47,7 +46,7 @@ export const MeuPerfilPage=()=>{
 
     return(
         <FundoStyled>
-            <p className="meuPerfil">Meu perfil</p>
+            <h1 className="meuPerfil">Meu perfil</h1>
             <DadosStyled>
                 <BotaoEditar>
                     <button onClick={()=>goToEditarPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
@@ -71,9 +70,9 @@ export const MeuPerfilPage=()=>{
                 <div>
                     <p className="tituloHistorico">Historico de Pedidos</p>
                     {renderizarPedidos.length >0 ?
-                        <p>{renderizarPedidos}</p>
-                        :
-                        <p className="pedido">Você não realizou nenhum pedido</p>
+                    <p>{renderizarPedidos}</p>
+                    :
+                    <p className="pedido">Você não realizou nenhum pedido</p>
                     }
                 </div>
             </HistoricoPedidos>

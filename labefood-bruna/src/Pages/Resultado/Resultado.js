@@ -5,7 +5,7 @@ import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { CircularProgress } from "@mui/material";
 import Stack from '@mui/material/Stack';
-import {  goToMeuCarrinhoPage } from "../../Routes/Coordinator"
+import {  goToCadastroPage, goToMeuCarrinhoPage } from "../../Routes/Coordinator"
 import { CardItens, CardRestaurante, DivCarregando, DivFundoResultado, InformacaoProduto, Preco } from "../../Components/Cards/Style"
 
 export const Resultado=()=>{
@@ -55,22 +55,24 @@ export const Resultado=()=>{
         obterRestaurantes()
     }, [])
 
+    const onClickCarrinho=(id) =>{
+        goToMeuCarrinhoPage(navigate, id)
+    }
+
 
      detalhesRestaurante.map((item, index)=>{
         return (
-            <>
-                <CardItens key={index}>
-                    <img src={item.photoUrl} alt={item.name}/>
-                    <InformacaoProduto>
-                        <p>{item.name}</p>
-                        <span>{item.description}</span>
-                        <Preco>
-                            <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                            <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
-                        </Preco>
-                    </InformacaoProduto>
-                </CardItens>
-            </>
+            <CardItens key={index}>
+                <img src={item.photoUrl} alt={item.name}/>
+                <InformacaoProduto>
+                    <p>{item.name}</p>
+                    <span>{item.description}</span>
+                    <Preco>
+                        <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                    </Preco>
+                </InformacaoProduto>
+            </CardItens>
         )
     })
 
@@ -86,19 +88,17 @@ export const Resultado=()=>{
 
     const resultadoVariasCategorias = produtosVariasCategorias.map((item, index)=>{
         return(
-            <>
-                <CardItens>
-                    <img src={item.photoUrl} alt={item.name}/>
-                    <InformacaoProduto>
-                        <p>{item.name}</p>
-                        <span>{item.description}</span>
-                        <Preco>
-                            <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                            <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
-                        </Preco>
-                    </InformacaoProduto>
-                </CardItens>
-            </>
+            <CardItens key={index}>
+                <img src={item.photoUrl} alt={item.name}/>
+                <InformacaoProduto>
+                    <p>{item.name}</p>
+                    <span>{item.description}</span>
+                    <Preco>
+                        <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                    </Preco>
+                </InformacaoProduto>
+            </CardItens>
         )
     })
 
@@ -112,21 +112,19 @@ export const Resultado=()=>{
         } 
     })
 
-    const resultadoBebidas = bebidas.map((item)=>{
+    const resultadoBebidas = bebidas.map((item, index)=>{
         return(
-            <>
-                <CardItens>
-                    <img src={item.photoUrl} alt={item.name}/>
-                    <InformacaoProduto>
-                        <p>{item.name}</p>
-                        <span>{item.description}</span>
-                        <Preco>
-                            <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                            <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
-                        </Preco>
-                    </InformacaoProduto>
-                </CardItens>
-            </>
+            <CardItens key={index}>
+                <img src={item.photoUrl} alt={item.name}/>
+                <InformacaoProduto>
+                    <p>{item.name}</p>
+                    <span>{item.description}</span>
+                    <Preco>
+                        <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                    </Preco>
+                </InformacaoProduto>
+            </CardItens>
         )
     })
 
@@ -140,21 +138,19 @@ export const Resultado=()=>{
         }
     })
 
-    const resultadoAcompanhamento = acompanhamentos.map((item)=>{
+    const resultadoAcompanhamento = acompanhamentos.map((item, index)=>{
         return(
-            <> 
-                <CardItens>
-                    <img src={item.photoUrl} alt={item.name}/>
-                    <InformacaoProduto>
-                        <p>{item.name}</p>
-                        <span>{item.description}</span>
-                    <Preco>
-                        <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
-                    </Preco>
-                    </InformacaoProduto>
-                </CardItens>
-            </>
+            <CardItens key={index}>
+                <img src={item.photoUrl} alt={item.name}/>
+                <InformacaoProduto>
+                    <p>{item.name}</p>
+                    <span>{item.description}</span>
+                <Preco>
+                    <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+                    <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                </Preco>
+                </InformacaoProduto>
+            </CardItens>
         )
     })
 
@@ -168,21 +164,19 @@ export const Resultado=()=>{
         }
     })
 
-    const resultadoSobremesa = sobremesa.map((item)=>{
+    const resultadoSobremesa = sobremesa.map((item, index)=>{
         return(
-            <> 
-                <CardItens>
-                    <img src={item.photoUrl} alt={item.name}/>
-                    <InformacaoProduto>
-                        <p>{item.name}</p>
-                        <span>{item.description}</span>
-                    <Preco>
-                        <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
-                    </Preco>
-                    </InformacaoProduto>
-                </CardItens>
-            </>
+            <CardItens key={index}>
+                <img src={item.photoUrl} alt={item.name}/>
+                <InformacaoProduto>
+                    <p>{item.name}</p>
+                    <span>{item.description}</span>
+                <Preco>
+                    <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+                    <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                </Preco>
+                </InformacaoProduto>
+            </CardItens>
         )
     })
 
@@ -199,7 +193,7 @@ export const Resultado=()=>{
             :
             <>
                 <CardRestaurante>
-                    <button onClick={()=>goToMeuCarrinhoPage(navigate)}>Carrinho</button>
+                    <button onClick={()=>onClickCarrinho(infoRestaurante?.id)}>Carrinho</button>
                     <img src={infoRestaurante?.logoUrl}  alt={infoRestaurante?.name}/>
                     <p>{infoRestaurante?.name}</p>
                     <span className="categoria">{infoRestaurante?.category}</span>

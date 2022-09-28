@@ -15,9 +15,10 @@ import { filterProps } from "framer-motion"
 export const FeedPage=()=>{
 
     const navigate = useNavigate();
-    const {busca, setBuscar} = useContext(GlobalStateContext)
+    const {busca, pedidoEmAndamento} = useContext(GlobalStateContext)
     const [listaDeRestaurantes, isLoading, ListaDeCategorias] = useRequestData()
     const [filtroCategoria, setFiltroCategoria]=useState([])
+    console.log(pedidoEmAndamento)
 
     const onClickCard=(id) =>{
         goToResultadoPage(navigate, id)
@@ -76,8 +77,17 @@ export const FeedPage=()=>{
                     </div>
                     :
                     <p className="semResultado">Não Encontramos :( </p>
-                }
+                    }
                 </DivRenderizacao>
+                {pedidoEmAndamento?.totalPrice > 0 ?
+                    <div>
+                        <p>Pedido em andamento:</p>
+                        <p>{pedidoEmAndamento?.restaurantName}</p>
+                        <p>SUBTOTAL: {pedidoEmAndamento?.totalPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                    </div>
+                    :
+                    <p>Sem pedidos em andamento</p>
+                }
                 <FooterComponents />                
         </DivFundoPaginaFooter>
     )

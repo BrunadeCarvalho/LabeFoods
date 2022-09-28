@@ -14,12 +14,23 @@ export const GlobalState = (props) =>{
     const [detalhesRestaurante, setDetalhesRestaurante]=useState([])
     const [dadosCliente, setDadosCliente]=useState("")
     const [endereco, setEndereco]=useState([])
+    const [pedidoEmAndamento, setPedidoEmAndamento]=useState([])
+
     
     const token = localStorage.getItem("token")
     const headers={
         headers:{
             auth: token
         }
+    }
+
+
+    //PEDIDO EM ANDAMENTO:
+    const pedidoAtual = () => {
+        axios.get(`${BASE_URL}/active-order`, headers)
+        .then((response)=>{
+            setPedidoEmAndamento(response.data.order)
+        })
     }
 
 
@@ -30,13 +41,15 @@ export const GlobalState = (props) =>{
             setDadosCliente(response.data.user)
         })
     }
+
     useEffect(()=>{
         dadosDoPerfil()
+        pedidoAtual()
     }, [])
 
 
     const data ={addProduto, setAddProduto, isLoading, setIsLoading, busca, setBuscar, infoRestaurante, setInfoRestaurante, setDetalhesRestaurante, detalhesRestaurante, 
-        dadosCliente, setDadosCliente, setEndereco, }
+        dadosCliente, setDadosCliente, setEndereco, pedidoEmAndamento}
 
     return(
         <GlobalStateContext.Provider value={data}>

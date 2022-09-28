@@ -15,7 +15,7 @@ export const BuscaInput = () =>{
 
     const ResultadoBusca= restauranteFiltrado.map((item, index)=>{
         return(
-            <DivCards>
+            <DivCards key={index}>
                 <img  src={item.logoUrl} alt={item.name}/>
                 <p>{item.name}</p>
                 <DivInformacaoRestaurante>
