@@ -42,7 +42,7 @@ export const MeuCarrinhoPage=(props)=>{
                     <p className="nome">{item.name}</p>
                     <p className="descricao">{item.description}</p>
                     <Preco>
-                        <span> R$ {item.price} </span>
+                        <span> {item.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
                         <button onClick={()=>deletarProdutos(item)}>Remover</button>
                     </Preco>
                 </InformacaoProduto>
@@ -59,7 +59,7 @@ export const MeuCarrinhoPage=(props)=>{
         }, [addProduto])
         setValorTotal(valorFinal)
         localStorage.setItem("carrinho", JSON.stringify(addProduto))
-    },[])
+    })
 
     const param = useParams()
 
