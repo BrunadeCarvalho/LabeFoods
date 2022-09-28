@@ -1,15 +1,14 @@
-import { useFormulario } from "../../Hook/formulario"
 import { BuscaInput } from "../../Components/inputs/busca/busca"
 import { useRequestData } from "../../Hook/useRequestData"
-import { CardRestaurante, DivBuscar, DivCategorias, DivFiltrosCategorias, DivInformacaoRestaurante, DivRestaurantes } from "./styled"
+import { DivCategorias,  DivInformacaoRestaurante, InfoPedidoStyled, PedidoEmAndamentoStyled, RelogioStyled } from "./styled"
 import { goToResultadoPage } from "../../Routes/Coordinator"
 import { useNavigate } from "react-router-dom"
 import { useContext, useState } from "react"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
-import { DivCards, DivFundo, DivRenderizacao } from "../Busca/styled"
+import { DivCards,  DivRenderizacao } from "../Busca/styled"
 import { FooterComponents } from "../../Components/Footer/Footer"
 import { DivFundoPaginaFooter } from "../MeuCarrinho/styled"
-import { filterProps } from "framer-motion"
+import {MdAccessTime} from "react-icons/md"
 
 
 export const FeedPage=()=>{
@@ -80,13 +79,18 @@ export const FeedPage=()=>{
                     }
                 </DivRenderizacao>
                 {pedidoEmAndamento?.totalPrice > 0 ?
-                    <div>
-                        <p>Pedido em andamento:</p>
-                        <p>{pedidoEmAndamento?.restaurantName}</p>
-                        <p>SUBTOTAL: {pedidoEmAndamento?.totalPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
-                    </div>
+                    <PedidoEmAndamentoStyled>
+                        <RelogioStyled>
+                            <p><MdAccessTime size="32px" color="white"/></p>
+                        </RelogioStyled>
+                        <InfoPedidoStyled>
+                            <p className="status">Pedido em andamento</p>
+                            <p className="restaurante">{pedidoEmAndamento?.restaurantName}</p>
+                            <p className="pagamento">SUBTOTAL: {pedidoEmAndamento?.totalPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                        </InfoPedidoStyled>
+                    </PedidoEmAndamentoStyled>
                     :
-                    <p>Sem pedidos em andamento</p>
+                    null
                 }
                 <FooterComponents />                
         </DivFundoPaginaFooter>

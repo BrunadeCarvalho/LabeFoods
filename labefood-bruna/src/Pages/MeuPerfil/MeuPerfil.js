@@ -2,11 +2,12 @@ import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { FooterComponents } from "../../Components/Footer/Footer"
 import { BASE_URL } from "../../Constants"
-import { BotaoEditar, DadosPessoais, DadosStyled, DivBotao, EnderecoStyled, FundoStyled, HistoricoPedidos, RenderizarHistorico } from "./styled"
+import { BotaoEditar, DadosPessoais, DadosStyled, DivBotao, DivInformacoes, EnderecoStyled, FundoStyled, HistoricoPedidos, RenderizarHistorico } from "./styled"
 import {MdOutlineModeEdit} from  'react-icons/md'
-import { goToCadastroPage, goToEditarPage } from "../../Routes/Coordinator"
+import { goToCadastroPage, goToEditarPage, goToLoginPage } from "../../Routes/Coordinator"
 import { useNavigate } from "react-router-dom"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
+import { HeaderStyled } from "../../Components/Header/Styled"
 
 export const MeuPerfilPage=()=>{
     const {dadosCliente }=useContext(GlobalStateContext)
@@ -24,6 +25,7 @@ export const MeuPerfilPage=()=>{
         axios.get(`${BASE_URL}/orders/history`, headers)
         .then((response)=>{
             setHistorico(response.data.orders)
+            localStorage.setItem("dados")
         })
     }
     useEffect(()=>{
@@ -44,9 +46,18 @@ export const MeuPerfilPage=()=>{
         )
     })
 
+    const botaoSair=()=>{
+        localStorage.removeItem("token");
+        goToLoginPage(navigate)
+
+    }
+
     return(
         <FundoStyled>
-            <h1 className="meuPerfil">Meu perfil</h1>
+            <HeaderStyled>
+                <h1 className="meuPerfil">Meu perfil</h1>
+                <button onClick={botaoSair}>sair</button>
+            </HeaderStyled>
             <DadosStyled>
                 <BotaoEditar>
                     <button onClick={()=>goToEditarPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
@@ -61,10 +72,10 @@ export const MeuPerfilPage=()=>{
                 <DivBotao>
                     <button onClick={()=>goToCadastroPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
                 </DivBotao>
-                <div>
+                <DivInformacoes>
                     <span className="titulo">Endereço cadastrado:</span>
                     <p className="endereco">{dadosCliente.address}</p>
-                </div>
+                </DivInformacoes>
             </EnderecoStyled>
             <HistoricoPedidos>
                 <div>

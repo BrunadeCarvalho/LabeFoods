@@ -55,11 +55,11 @@ export const MeuCarrinhoPage=(props)=>{
     useEffect(()=>{
         let valorFinal = 0
         addProduto.forEach((produto)=>{
-            valorFinal += (produto.price * produto.quantity) + valorFrete
+            valorFinal += (produto.price * produto.quantity) 
         }, [addProduto])
-        setValorTotal(valorFinal)
+        setValorTotal(valorFinal + valorFrete)
         localStorage.setItem("carrinho", JSON.stringify(addProduto))
-    })
+    },[addProduto])
 
     const param = useParams()
 

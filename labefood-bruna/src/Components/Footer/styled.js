@@ -1,10 +1,12 @@
-import { style } from "@mui/system";
 import styled from "styled-components";
 
 export const Footer=styled.footer`
     width: 360px;
-    height: 10vh;
+    height: 7vh;
     display: flex;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
 
     button{
         background-color: transparent;

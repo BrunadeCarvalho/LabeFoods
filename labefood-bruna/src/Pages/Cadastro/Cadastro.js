@@ -37,6 +37,7 @@ export const CadastroPage=()=>{
     const cadastrarEndereco = (event)=>{
         event.preventDefault();
         axios.put(`${BASE_URL}/address`,form,headers).then((response)=>{
+            localStorage.setItem("token", response.data.token)
             setEndereco()
             alert("Endereço cadastrado com sucesso")
             navigate("/meu_perfil")

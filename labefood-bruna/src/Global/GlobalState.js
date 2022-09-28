@@ -12,7 +12,7 @@ export const GlobalState = (props) =>{
     const [busca, setBuscar] = useState("")
     const [infoRestaurante, setInfoRestaurante]=useState(JSON.parse(localStorage.getItem("restaurante")) || ("") )
     const [detalhesRestaurante, setDetalhesRestaurante]=useState([])
-    const [dadosCliente, setDadosCliente]=useState("")
+    const [dadosCliente, setDadosCliente]=useState(JSON.parse(localStorage.getItem("dados")) || ("") )
     const [endereco, setEndereco]=useState([])
     const [pedidoEmAndamento, setPedidoEmAndamento]=useState([])
 
