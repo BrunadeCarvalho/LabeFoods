@@ -21,6 +21,7 @@ export const useRequestData=()=>{
 
     //obter restaurante:
     const obterRestaurantes=()=>{
+        setIsLoading(true)
         axios.get(`${BASE_URL}/restaurants`, headers).then((response)=>{
             setIsLoading(false)
             setListaDeRestaurantes(response.data.restaurants)
@@ -36,5 +37,5 @@ export const useRequestData=()=>{
     
 
     
-    return [listaDeRestaurantes, isLoading, ListaDeCategorias, obterRestaurantes]
+    return [listaDeRestaurantes, isLoading, ListaDeCategorias, obterRestaurantes, setIsLoading]
 }

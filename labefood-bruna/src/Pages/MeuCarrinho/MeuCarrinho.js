@@ -9,10 +9,12 @@ import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { useRequestData } from "../../Hook/useRequestData"
 import { DadosRestaurante, DivFundoPaginaFooter, DivValorTotal, Frete, PagamentoStyled, TextoCarrinho } from "./styled"
 import { toast } from "react-toastify";
+import { CircularProgress } from "@mui/material";
+import Stack from '@mui/material/Stack';
 
 
 export const MeuCarrinhoPage=(props)=>{
-    const [listaDeRestaurantes, isLoading, ListaDeCategorias, obterRestaurantes] = useRequestData()
+    const [listaDeRestaurantes, isLoading, setIsLoading, ListaDeCategorias, obterRestaurantes] = useRequestData()
 
     useEffect(()=>{
         obterRestaurantes()

@@ -1,7 +1,7 @@
 import { BuscaInput } from "../../Components/inputs/busca/busca"
 import { useRequestData } from "../../Hook/useRequestData"
 import { DivCategorias,  DivInformacaoRestaurante, InfoPedidoStyled, PedidoEmAndamentoStyled, RelogioStyled } from "./styled"
-import { goToFeedPage, goToResultadoPage } from "../../Routes/Coordinator"
+import { goToResultadoPage } from "../../Routes/Coordinator"
 import { useNavigate } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
@@ -9,6 +9,9 @@ import { DivCards,  DivRenderizacao } from "../Busca/styled"
 import { FooterComponents } from "../../Components/Footer/Footer"
 import { DivFundoPaginaFooter } from "../MeuCarrinho/styled"
 import {MdAccessTime} from "react-icons/md"
+import { CircularProgress } from "@mui/material";
+import Stack from '@mui/material/Stack';
+import { DivCarregando } from "../../Components/Cards/Style"
 
 
 export const FeedPage=()=>{
@@ -61,47 +64,59 @@ export const FeedPage=()=>{
 
     return(
         <DivFundoPaginaFooter>
-            <BuscaInput /> 
-            <DivCategorias>
-                <button className="todos" onClick={todos}>Todos</button>
-                {categorias}
-            </DivCategorias>
-            <DivRenderizacao>
-                {filtroCategoria.length > 0 ?
-                    filtroCategoria.map((item, index)=>(
-                        <DivCards key={index} onClick={()=> onClickCard(item.id)}>
-                            <img src={item.logoUrl} alt={item.name}/>
-                            <p>{item.name}</p>
-                            <DivInformacaoRestaurante>
-                                <span>{item.deliveryTime} min</span>
-                                <span> Frete: {item.shipping.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                            </DivInformacaoRestaurante>
-                        </DivCards>
-                ))
-                : 
-                ResultadoBusca.length > 0 ?
-                <div>
-                    {ResultadoBusca}
-                </div>
+            {isLoading ?
+                <DivCarregando>
+                    <Stack sx={{ color: 'grey.500' }} spacing={1} direction="row">
+                        <CircularProgress color="inherit" size="50px" />
+                        <CircularProgress color="inherit" size="50px" />
+                        <CircularProgress color="inherit" size="50px" />
+                    </Stack>
+                </DivCarregando>
                 :
-                <p className="semResultado">Não Encontramos :( </p>
+                <>
+                <BuscaInput /> 
+                <DivCategorias>
+                    <button className="todos" onClick={todos}>Todos</button>
+                    {categorias}
+                </DivCategorias>
+                <DivRenderizacao>
+                    {filtroCategoria.length > 0 ?
+                        filtroCategoria.map((item, index)=>(
+                            <DivCards key={index} onClick={()=> onClickCard(item.id)}>
+                                <img src={item.logoUrl} alt={item.name}/>
+                                <p>{item.name}</p>
+                                <DivInformacaoRestaurante>
+                                    <span>{item.deliveryTime} min</span>
+                                    <span> Frete: {item.shipping.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+                                </DivInformacaoRestaurante>
+                            </DivCards>
+                    ))
+                    : 
+                    ResultadoBusca.length > 0 ?
+                    <div>
+                        {ResultadoBusca}
+                    </div>
+                    :
+                    <p className="semResultado">Não Encontramos :( </p>
+                    }
+                </DivRenderizacao>
+                {pedidoEmAndamento?.totalPrice > 0 ?
+                    <PedidoEmAndamentoStyled>
+                        <RelogioStyled>
+                            <p><MdAccessTime size="32px" color="white"/></p>
+                        </RelogioStyled>
+                        <InfoPedidoStyled>
+                            <p className="status">Pedido em andamento</p>
+                            <p className="restaurante">{pedidoEmAndamento?.restaurantName}</p>
+                            <p className="pagamento">SUBTOTAL: {pedidoEmAndamento?.totalPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                        </InfoPedidoStyled>
+                    </PedidoEmAndamentoStyled>
+                    :
+                    null
                 }
-            </DivRenderizacao>
-            {pedidoEmAndamento?.totalPrice > 0 ?
-                <PedidoEmAndamentoStyled>
-                    <RelogioStyled>
-                        <p><MdAccessTime size="32px" color="white"/></p>
-                    </RelogioStyled>
-                    <InfoPedidoStyled>
-                        <p className="status">Pedido em andamento</p>
-                        <p className="restaurante">{pedidoEmAndamento?.restaurantName}</p>
-                        <p className="pagamento">SUBTOTAL: {pedidoEmAndamento?.totalPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
-                    </InfoPedidoStyled>
-                </PedidoEmAndamentoStyled>
-                :
-                null
-            }
-            <FooterComponents />                
+                <FooterComponents /> 
+            </>
+            }               
         </DivFundoPaginaFooter>
     )
 }
