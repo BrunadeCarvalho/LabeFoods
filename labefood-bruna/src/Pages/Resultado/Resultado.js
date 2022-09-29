@@ -77,8 +77,9 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                     <Preco>
                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        <BasicModal />
-                    </Preco>
+                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+{/*                         <BasicModal />
+ */}                    </Preco>
                 </InformacaoProduto>
             </CardItens>
         )
@@ -103,8 +104,9 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                     <Preco>
                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        <BasicModal />
-                    </Preco>
+                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+{/*                         <BasicModal />
+ */}                    </Preco>
                 </InformacaoProduto>
             </CardItens>
         )
@@ -129,9 +131,9 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                     <Preco>
                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        {/* <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button> */}
-                        <BasicModal />
-                    </Preco>
+                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+{/*                         <BasicModal />
+ */}                    </Preco>
                 </InformacaoProduto>
             </CardItens>
         )
@@ -156,8 +158,9 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                 <Preco>
                     <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                    <BasicModal />
-                </Preco>
+                    <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+{/*                         <BasicModal />
+ */}                </Preco>
                 </InformacaoProduto>
             </CardItens>
         )
@@ -182,8 +185,9 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                 <Preco>
                     <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                    <BasicModal />
-                </Preco>
+                    <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+{/*                         <BasicModal />
+ */}                </Preco>
                 </InformacaoProduto>
             </CardItens>
         )

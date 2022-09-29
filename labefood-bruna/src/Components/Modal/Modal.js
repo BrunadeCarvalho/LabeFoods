@@ -69,8 +69,8 @@ export default function BasicModal() {
                 <option>9</option>
                 <option>10</option>
             </select>
-{/*             <button onClick={()=>adicionandoProdutoNoCarrinhos(item)}>ADICIONAR AO CARRINHO</button>
- */}          </TypographyStyled>
+            <button>ADICIONAR AO CARRINHO</button>
+          </TypographyStyled>
         </BoxModal>
       </ModalStyled>
     </div>
