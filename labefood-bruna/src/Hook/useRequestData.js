@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from 'axios'
 import { BASE_URL } from "../Constants"
 import { useNavigate, useParams } from "react-router-dom"
+import { goToLoginPage } from "../Routes/Coordinator"
 
 
 export const useRequestData=()=>{
@@ -25,12 +26,15 @@ export const useRequestData=()=>{
             setListaDeRestaurantes(response.data.restaurants)
             const arrayCategorias = response.data.restaurants.map(item => item.category)
             setListaDeCategorias([...new Set(arrayCategorias)])
-        })
+        }).catch((error)=>
+            goToLoginPage(navigate)
+        )
     }
     useEffect(()=>{
         obterRestaurantes()
     }, [])
+    
 
     
-    return [listaDeRestaurantes, isLoading, ListaDeCategorias]
+    return [listaDeRestaurantes, isLoading, ListaDeCategorias, obterRestaurantes]
 }

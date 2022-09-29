@@ -5,11 +5,20 @@ import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { CircularProgress } from "@mui/material";
 import Stack from '@mui/material/Stack';
-import {  goToCadastroPage, goToMeuCarrinhoPage } from "../../Routes/Coordinator"
+import { goToMeuCarrinhoPage } from "../../Routes/Coordinator"
 import { CardItens, CardRestaurante, DivCarregando, DivFundoResultado, InformacaoProduto, Preco } from "../../Components/Cards/Style"
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import BasicModal from "../../Components/Modal/Modal"
 
 export const Resultado=()=>{
     const {addProduto, setAddProduto, isLoading, setIsLoading, setInfoRestaurante, infoRestaurante, detalhesRestaurante, setDetalhesRestaurante}=useContext(GlobalStateContext)
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     
     const adicionandoProdutoNoCarrinho = item => {
         let procurarProduto = addProduto.find(elem => elem.id === item.id)
@@ -59,7 +68,6 @@ export const Resultado=()=>{
         goToMeuCarrinhoPage(navigate, id)
     }
 
-
      detalhesRestaurante.map((item, index)=>{
         return (
             <CardItens key={index}>
@@ -69,7 +77,7 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                     <Preco>
                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                        <BasicModal />
                     </Preco>
                 </InformacaoProduto>
             </CardItens>
@@ -95,7 +103,7 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                     <Preco>
                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                        <BasicModal />
                     </Preco>
                 </InformacaoProduto>
             </CardItens>
@@ -121,7 +129,8 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                     <Preco>
                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                        <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                        {/* <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button> */}
+                        <BasicModal />
                     </Preco>
                 </InformacaoProduto>
             </CardItens>
@@ -147,7 +156,7 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                 <Preco>
                     <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                    <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                    <BasicModal />
                 </Preco>
                 </InformacaoProduto>
             </CardItens>
@@ -173,7 +182,7 @@ export const Resultado=()=>{
                     <span>{item.description}</span>
                 <Preco>
                     <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-                    <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
+                    <BasicModal />
                 </Preco>
                 </InformacaoProduto>
             </CardItens>
@@ -199,7 +208,7 @@ export const Resultado=()=>{
                     <span className="categoria">{infoRestaurante?.category}</span>
                     <div>
                         <span className="tempo">{infoRestaurante?.deliveryTime} min</span>
-                        <span className="delivery"> {infoRestaurante?.shipping}</span>
+                        <span className="delivery"> {infoRestaurante?.shipping/* .toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) */}</span>
                     </div>
                         <span className="endereco"> {infoRestaurante?.address} </span>
                 </CardRestaurante>

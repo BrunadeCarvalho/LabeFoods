@@ -6,15 +6,22 @@ import { CardItens, InformacaoProduto, Preco } from "../../Components/Cards/Styl
 import {  FooterComponents } from "../../Components/Footer/Footer"
 import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
+import { useRequestData } from "../../Hook/useRequestData"
 import { DadosRestaurante, DivFundoPaginaFooter, DivValorTotal, Frete, PagamentoStyled, TextoCarrinho } from "./styled"
 
 export const MeuCarrinhoPage=(props)=>{
+    const [listaDeRestaurantes, isLoading, ListaDeCategorias, obterRestaurantes] = useRequestData()
+
+    useEffect(()=>{
+        obterRestaurantes()
+    },[])
 
     const navigate=useNavigate()
     const {addProduto, setAddProduto, infoRestaurante }=useContext(GlobalStateContext)
     const [valorTotal, setValorTotal]=useState(0)
     const [creditCard, setCreditCard] = useState(true)
     const [money, setMoney] = useState(false)
+
     
     const handlePaymentMethod = () => {
         setCreditCard(!creditCard)
@@ -53,6 +60,7 @@ export const MeuCarrinhoPage=(props)=>{
     let valorFrete = Number(infoRestaurante.shipping)
 
     useEffect(()=>{
+
         let valorFinal = 0
         addProduto.forEach((produto)=>{
             valorFinal += (produto.price * produto.quantity) 

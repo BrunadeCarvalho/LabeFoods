@@ -7,7 +7,7 @@ export const DivFundo=styled.div`
     height: 100vh;
 
     .semResultado{
-        width: 100%;
+        width: 296px;
         height: 18px;
         opacity: 0.89;
         font-family: Roboto;
@@ -59,5 +59,21 @@ export const DivRenderizacao=styled.div`
     flex-direction: column;
     width: 100%;
     align-items: center;
+
+    .semResultado{
+        width: 296px;
+        height: 18px;
+        opacity: 0.89;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        text-align: center;
+        color: #000;
+        margin-top: 1vh;
+    }
     
 `
