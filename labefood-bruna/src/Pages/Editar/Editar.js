@@ -8,9 +8,9 @@ import {IoIosArrowBack} from 'react-icons/io'
 import { DivFundo } from "../Login/styled"
 import { NameInput } from "../../Components/inputs/name"
 import { EmailInput } from "../../Components/inputs/email"
-import { PasswordInput } from "../../Components/inputs/password"
 import { CPFInput } from "../../Components/inputs/cpf"
 import { BotaoLaranja } from "../../Components/Botoes/styled"
+import { toast } from "react-toastify";
 
 export const EditarPage=()=>{
     const navigate=useNavigate()
@@ -33,11 +33,26 @@ export const EditarPage=()=>{
         event.preventDefault();
         axios.put(`${BASE_URL}/profile`,form,headers).then((response)=>{
             setEndereco()
-            alert("Endereço cadastrado com sucesso")
-            navigate("/meu_perfil")
+            toast.success('Dados atualizado com sucesso', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });              
+                navigate("/meu_perfil")
         }).catch((error)=>{
-            alert("Endereço não cadastrado")
-        })
+            toast.error('Os dados não foram atualizados', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });        })
     }
 
     const voltar=()=>{

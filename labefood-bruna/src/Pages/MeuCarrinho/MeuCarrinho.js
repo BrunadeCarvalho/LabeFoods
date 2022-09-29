@@ -9,7 +9,6 @@ import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { useRequestData } from "../../Hook/useRequestData"
 import { DadosRestaurante, DivFundoPaginaFooter, DivValorTotal, Frete, PagamentoStyled, TextoCarrinho } from "./styled"
 import { toast } from "react-toastify";
-import { dark } from "@mui/material/styles/createPalette"
 
 
 export const MeuCarrinhoPage=(props)=>{
@@ -105,7 +104,9 @@ export const MeuCarrinhoPage=(props)=>{
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
+            });
+            localStorage.removeItem("carrinho");
+            
         }).catch((error)=>{
             toast.error('Aguarde seu outro pedido ser finalizado.', {
                 position: "top-center",
