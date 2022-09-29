@@ -13,6 +13,7 @@ import { useFormulario } from "../../Hook/formulario"
 import { DivFormulario, DivFundo } from "../Login/styled"
 import {IoIosArrowBack} from 'react-icons/io'
 import { HeaderStyled } from "../../Components/Header/Styled"
+import { toast } from "react-toastify";
 
 export const CadastroPage=()=>{
     const navigate=useNavigate()
@@ -38,18 +39,24 @@ export const CadastroPage=()=>{
         event.preventDefault();
         axios.put(`${BASE_URL}/address`,form,headers).then((response)=>{
             localStorage.setItem("token", response.data.token)
-            setEndereco()
-            alert("Endereço cadastrado com sucesso")
+            setEndereco()          
             navigate("/meu_perfil")
         }).catch((error)=>{
-            alert("Endereço não cadastrado")
+            toast.error('Endereço não cadastrado', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         })
     }
 
     const voltar=()=>{
         navigate(-1)
     }
-
 
     return(
         <DivFundo>

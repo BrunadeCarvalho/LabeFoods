@@ -11,6 +11,7 @@ import { DivFormulario, DivFundo } from "../Login/styled"
 import ImagemLogin from '../../img/logo-future-eats-invert@3x.png'
 import { BotaoLaranja } from "../../Components/Botoes/styled"
 import { ConfirmarInput } from "../../Components/inputs/Confirmar"
+import { toast } from "react-toastify"
 
 
 export const SignUpPage=()=>{
@@ -49,11 +50,26 @@ export const SignUpPage=()=>{
             localStorage.setItem("token", response.data.token)
             navigate("/cadastro") 
         }).catch((error)=>{
-            alert("Usuário já cadastrado")
+            toast.error('Usuário já cadastrado', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         })
-    }else{
-        alert("as senhas não conferem")
-    }
+        }else{
+            toast.warn('As senhas não conferem', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });        }
     }
 
     return(

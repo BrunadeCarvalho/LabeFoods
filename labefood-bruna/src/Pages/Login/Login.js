@@ -9,6 +9,7 @@ import { goToSignupPage } from "../../Routes/Coordinator"
 import { BotaoCadastrar, DivBotoes, DivFormulario, DivFundo } from "./styled"
 import ImagemLogin from '../../img/logo-future-eats-invert@3x.png'
 import { BotaoLaranja } from "../../Components/Botoes/styled"
+import { toast } from "react-toastify"
 
 
 export const LoginPage=()=>{
@@ -36,6 +37,15 @@ export const LoginPage=()=>{
             localStorage.setItem("token", response.data.token)
             navigate("/feed")
         }).catch((error)=>{
+            toast.error('E-mail ou senha incorreto', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         })
     }
 
