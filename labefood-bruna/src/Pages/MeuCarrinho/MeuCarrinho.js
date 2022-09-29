@@ -8,6 +8,9 @@ import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { useRequestData } from "../../Hook/useRequestData"
 import { DadosRestaurante, DivFundoPaginaFooter, DivValorTotal, Frete, PagamentoStyled, TextoCarrinho } from "./styled"
+import { toast } from "react-toastify";
+import { dark } from "@mui/material/styles/createPalette"
+
 
 export const MeuCarrinhoPage=(props)=>{
     const [listaDeRestaurantes, isLoading, ListaDeCategorias, obterRestaurantes] = useRequestData()
@@ -91,13 +94,42 @@ export const MeuCarrinhoPage=(props)=>{
             paymentMethod: money ? "money" : "creditcard"
         }
 
+        {carrinho.length > 0 ?
         axios.post(`${BASE_URL}/restaurants/${param.id}/order`, body, headers)
         .then((response)=>{
-            alert("Pedido Criado com sucesso")
+            toast.success('Pedido realizado com sucesso!', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         }).catch((error)=>{
-            alert ("Pedido não realizado")
+            toast.error('Aguarde seu outro pedido ser finalizado.', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            
         })
+        :
+        toast.warn('Insira pelo menos 1 item no carrinho.', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });    }
     }
+
 
 
 
