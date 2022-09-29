@@ -15,6 +15,8 @@ export const FooterComponents = () =>{
     const onClickCarrinho=(id) =>{
         goToMeuCarrinhoPage(navigate, id)
     }
+    
+
 
     return(
     <Footer>

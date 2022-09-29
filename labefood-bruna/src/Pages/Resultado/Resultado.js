@@ -5,14 +5,8 @@ import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { CircularProgress } from "@mui/material";
 import Stack from '@mui/material/Stack';
-import { goToMeuCarrinhoPage } from "../../Routes/Coordinator"
 import { CardItens, CardRestaurante, DivCarregando, DivFundoResultado, InformacaoProduto, Preco } from "../../Components/Cards/Style"
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import BasicModal from "../../Components/Modal/Modal"
 import { FooterComponents } from "../../Components/Footer/Footer"
 
 export const Resultado=()=>{
@@ -65,9 +59,6 @@ export const Resultado=()=>{
         obterRestaurantes()
     }, [])
 
-    const onClickCarrinho=(id) =>{
-        goToMeuCarrinhoPage(navigate, id)
-    }
 
      detalhesRestaurante.map((item, index)=>{
         return (
