@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import BasicModal from "../../Components/Modal/Modal"
+import { FooterComponents } from "../../Components/Footer/Footer"
 
 export const Resultado=()=>{
     const {addProduto, setAddProduto, isLoading, setIsLoading, setInfoRestaurante, infoRestaurante, detalhesRestaurante, setDetalhesRestaurante}=useContext(GlobalStateContext)
@@ -206,7 +207,6 @@ export const Resultado=()=>{
             :
             <>
                 <CardRestaurante>
-                    <button onClick={()=>onClickCarrinho(infoRestaurante?.id)}>Carrinho</button>
                     <img src={infoRestaurante?.logoUrl}  alt={infoRestaurante?.name}/>
                     <p>{infoRestaurante?.name}</p>
                     <span className="categoria">{infoRestaurante?.category}</span>
@@ -245,7 +245,7 @@ export const Resultado=()=>{
                 }
             </>
             }
-
+            <FooterComponents />
         </DivFundoResultado>
     )
 }
