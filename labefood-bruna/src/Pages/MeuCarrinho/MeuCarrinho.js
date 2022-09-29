@@ -91,13 +91,18 @@ export const MeuCarrinhoPage=(props)=>{
             paymentMethod: money ? "money" : "creditcard"
         }
 
+        {carrinho.length > 0 ?
         axios.post(`${BASE_URL}/restaurants/${param.id}/order`, body, headers)
         .then((response)=>{
             alert("Pedido Criado com sucesso")
         }).catch((error)=>{
             alert ("Pedido não realizado")
         })
+        :
+        alert("Insira pelo menos 1 item")
     }
+    }
+
 
 
 
