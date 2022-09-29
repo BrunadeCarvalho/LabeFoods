@@ -103,6 +103,29 @@ export const DivCategorias=styled.div`
             color: var(--dark-peach);
         }
     }
+
+    .todos{
+            width: 87px;
+            height: 18px;
+            margin: 0 8px;
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: -0.39px;
+            text-align: center;
+            color: var(--dark-peach);
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+
+            :hover{
+                color: gray;
+            }
+
+        }
 `
 export const PedidoEmAndamentoStyled=styled.div`
     display: flex;

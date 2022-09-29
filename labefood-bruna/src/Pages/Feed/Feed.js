@@ -63,7 +63,7 @@ export const FeedPage=()=>{
         <DivFundoPaginaFooter>
             <BuscaInput /> 
             <DivCategorias>
-                <button onClick={todos}>Todos</button>
+                <button className="todos" onClick={todos}>Todos</button>
                 {categorias}
             </DivCategorias>
             <DivRenderizacao>
