@@ -6,7 +6,7 @@ export const HeaderStyled=styled.header`
     border-bottom: 1px solid #b8b8b8;
     align-items: center;
     padding-bottom: 16px;
-    margin-bottom: 24px;
+    margin: 24px 0;
 
     button{
         background-color: transparent;
@@ -15,7 +15,7 @@ export const HeaderStyled=styled.header`
     }
 
     p{
-        width: 64px;
+        width: 100px;
         font-family: Roboto;
         font-size: 16px;
         font-weight: normal;

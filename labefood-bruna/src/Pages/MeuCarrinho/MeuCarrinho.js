@@ -7,10 +7,12 @@ import {  FooterComponents } from "../../Components/Footer/Footer"
 import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { useRequestData } from "../../Hook/useRequestData"
-import { DadosRestaurante, DivFundoPaginaFooter, DivValorTotal, Frete, PagamentoStyled, TextoCarrinho } from "./styled"
+import { DadosRestaurante, DetalhesProdutos, DivFundoPaginaFooter, DivValorTotal, Frete, MetodoDePagamentoStyled, PagamentoStyled, PrecoBotaoStyled, TextoCarrinho, TituloQuantidadeStyled } from "./styled"
 import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
 import Stack from '@mui/material/Stack';
+import { HeaderStyled } from "../../Components/Header/Styled"
+import {IoIosArrowBack} from 'react-icons/io'
 
 
 export const MeuCarrinhoPage=(props)=>{
@@ -48,15 +50,17 @@ export const MeuCarrinhoPage=(props)=>{
         return(
             <CardItens key={index}>
                 <img src={item.photoUrl} alt={item.name}/>
-                <InformacaoProduto>
-                    <p className="quantidade">{item.quantity}</p>
-                    <p className="nome">{item.name}</p>
+                <DetalhesProdutos>
+                    <TituloQuantidadeStyled>
+                        <p className="quantidadeAdicionada">{item.quantity}</p>
+                        <p className="nomeProduto">{item.name}</p>
+                    </TituloQuantidadeStyled>
                     <p className="descricao">{item.description}</p>
-                    <Preco>
+                    <PrecoBotaoStyled>
                         <span> {item.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
                         <button onClick={()=>deletarProdutos(item)}>Remover</button>
-                    </Preco>
-                </InformacaoProduto>
+                    </PrecoBotaoStyled>
+                </DetalhesProdutos>
             </CardItens>
         )
     })
@@ -95,49 +99,53 @@ export const MeuCarrinhoPage=(props)=>{
             paymentMethod: money ? "money" : "creditcard"
         }
 
-        {carrinho.length > 0 ?
-        axios.post(`${BASE_URL}/restaurants/${param.id}/order`, body, headers)
-        .then((response)=>{
-            toast.success('Pedido realizado com sucesso!', {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
-            localStorage.removeItem("carrinho");
-            
-        }).catch((error)=>{
-            toast.error('Aguarde seu outro pedido ser finalizado.', {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+        if(carrinho.length > 0){
+            axios.post(`${BASE_URL}/restaurants/${param.id}/order`, body, headers)
+            .then((response)=>{
+                toast.success('Pedido realizado com sucesso!', {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
                 });
-            
-        })
-        :
-        toast.warn('Insira pelo menos 1 item no carrinho.', {
-            position: "top-center",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });    }
+                localStorage.removeItem("carrinho");
+                
+            }).catch((error)=>{
+                toast.error('Aguarde seu outro pedido ser finalizado.', {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    });
+                
+            })
+        }else{
+            toast.warn('Insira pelo menos 1 item no carrinho.', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });    }
     }
-
-
-
+    const voltar=()=>{
+        navigate(-1)
+    }
 
     return(
         <DivFundoPaginaFooter>
+            <HeaderStyled>
+                <button onClick={voltar}> <IoIosArrowBack size="24px" /></button>
+                <p>Meu carrinho</p>
+            </HeaderStyled>
             {carrinho.length > 0 ?
             <DadosRestaurante>
                 <img src={infoRestaurante?.logoUrl} alt={infoRestaurante?.name} />
@@ -149,9 +157,9 @@ export const MeuCarrinhoPage=(props)=>{
             undefined
             }
             {carrinho.length > 0 ?
-            <DivFundoPaginaFooter>
+            <div>
                 {carrinho}
-            </DivFundoPaginaFooter>
+            </div>
             :
             <TextoCarrinho>Carrinho vazio</TextoCarrinho>  
             }
@@ -168,19 +176,21 @@ export const MeuCarrinhoPage=(props)=>{
                 <p className="subtotal">SUBTOTAL:</p> 
                 <p className="valor"> {valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
             </DivValorTotal>
-            <h6>Forma de pagamento</h6>
-            <PagamentoStyled>
-                <label>
-                    <input type="radio" checked={money} onChange={handlePaymentMethod} name="fav_language"/> 
-                    Dinheiro
-                </label>
-            </PagamentoStyled>
-            <PagamentoStyled>
-                <label>
-                    <input type="radio" checked={creditCard} onChange={handlePaymentMethod} name="fav_language"/> 
-                    Cartão de crédito
-                </label>
-            </PagamentoStyled>
+            <MetodoDePagamentoStyled>
+                <h6>Forma de pagamento</h6>
+                <PagamentoStyled>
+                    <label>
+                        <input type="radio" checked={money} onChange={handlePaymentMethod} name="fav_language"/> 
+                        Dinheiro
+                    </label>
+                </PagamentoStyled>
+                <PagamentoStyled>
+                    <label>
+                        <input type="radio" checked={creditCard} onChange={handlePaymentMethod} name="fav_language"/> 
+                        Cartão de crédito
+                    </label>
+                </PagamentoStyled>
+            </MetodoDePagamentoStyled>
             <BotaoLaranja onClick={placeOrder}>Confirmar</BotaoLaranja>
             <FooterComponents />
         </DivFundoPaginaFooter>

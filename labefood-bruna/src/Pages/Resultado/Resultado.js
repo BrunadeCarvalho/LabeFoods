@@ -71,7 +71,7 @@ export const Resultado=()=>{
                         <span> {(item.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
                         <button onClick={()=> adicionandoProdutoNoCarrinho(item)}>Adicionar</button>
 {/*                         <BasicModal />
- */}                    </Preco>
+ */}                </Preco>
                 </InformacaoProduto>
             </CardItens>
         )
