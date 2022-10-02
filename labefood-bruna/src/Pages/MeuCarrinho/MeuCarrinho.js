@@ -2,21 +2,22 @@ import axios from "axios"
 import { useContext, useEffect, useState, } from "react"
 import { useNavigate, useParams, } from "react-router-dom"
 import { BotaoLaranja } from "../../Components/Botoes/styled"
-import { CardItens, InformacaoProduto, Preco } from "../../Components/Cards/Style"
+import { CardItens } from "../../Components/Cards/Style"
 import {  FooterComponents } from "../../Components/Footer/Footer"
 import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { useRequestData } from "../../Hook/useRequestData"
 import { DadosRestaurante, DetalhesProdutos, DivFundoPaginaFooter, DivValorTotal, Frete, MetodoDePagamentoStyled, PagamentoStyled, PrecoBotaoStyled, TextoCarrinho, TituloQuantidadeStyled } from "./styled"
 import { toast } from "react-toastify";
-import { CircularProgress } from "@mui/material";
-import Stack from '@mui/material/Stack';
 import { HeaderStyled } from "../../Components/Header/Styled"
 import {IoIosArrowBack} from 'react-icons/io'
+import { DivInformacoes } from "../MeuPerfil/styled"
+import { Header } from "../../Components/Header/Header"
 
 
 export const MeuCarrinhoPage=(props)=>{
     const [listaDeRestaurantes, isLoading, setIsLoading, ListaDeCategorias, obterRestaurantes] = useRequestData()
+    const {dadosCliente} = useContext(GlobalStateContext)
 
     useEffect(()=>{
         obterRestaurantes()
@@ -67,6 +68,8 @@ export const MeuCarrinhoPage=(props)=>{
 
     let valorFrete = Number(infoRestaurante.shipping)
 
+    let valorFreteRenderizado = Number(infoRestaurante.shipping).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+
     useEffect(()=>{
 
         let valorFinal = 0
@@ -99,7 +102,7 @@ export const MeuCarrinhoPage=(props)=>{
             paymentMethod: money ? "money" : "creditcard"
         }
 
-        if(carrinho.length > 0){
+        if(carrinho.length > 0 ){
             axios.post(`${BASE_URL}/restaurants/${param.id}/order`, body, headers)
             .then((response)=>{
                 toast.success('Pedido realizado com sucesso!', {
@@ -122,8 +125,7 @@ export const MeuCarrinhoPage=(props)=>{
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
-                    });
-                
+                    });        
             })
         }else{
             toast.warn('Insira pelo menos 1 item no carrinho.', {
@@ -136,16 +138,21 @@ export const MeuCarrinhoPage=(props)=>{
                 progress: undefined,
                 });    }
     }
+
     const voltar=()=>{
         navigate(-1)
     }
 
+
     return(
         <DivFundoPaginaFooter>
-            <HeaderStyled>
-                <button onClick={voltar}> <IoIosArrowBack size="24px" /></button>
-                <p>Meu carrinho</p>
-            </HeaderStyled>
+            <Header>
+                Meu carrinho
+            </Header>
+            <DivInformacoes>
+                <span className="titulo">Endereço de entrega:</span>
+                <p className="endereco">{dadosCliente.address}</p>
+            </DivInformacoes>
             {carrinho.length > 0 ?
             <DadosRestaurante>
                 <img src={infoRestaurante?.logoUrl} alt={infoRestaurante?.name} />
@@ -165,7 +172,7 @@ export const MeuCarrinhoPage=(props)=>{
             }
             {carrinho.length > 0 ? 
             <Frete>
-                <p className="valorFrete">Frete: {infoRestaurante.shipping.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                <p className="valorFrete">  {Number(infoRestaurante.shipping).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </p>
             </Frete>
             :
             <Frete>

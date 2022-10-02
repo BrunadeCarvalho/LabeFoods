@@ -1,8 +1,5 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
+import {useState}from 'react';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import { BoxModal, ModalStyled, TypographyStyled } from './Styled';
 import { GlobalStateContext } from '../../Global/GlobalStateContext';
 import { useContext} from "react"
@@ -21,30 +18,12 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
+export default function BasicModal({item, add}) {
+  const [open, setOpen] = useState(false);
+  const [quantity, setQuantity] = useState(0);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const {addProduto, setAddProduto }=useContext(GlobalStateContext)
-
-
-  const adicionandoProdutoNoCarrinho = item => {
-    let procurarProduto = addProduto.find(elem => elem.id === item.id)
-
-    if(procurarProduto){
-        procurarProduto.quantity += 1
-        setAddProduto(addProduto)
-        localStorage.setItem("carrinho", JSON.stringify(addProduto))
-    } else {
-        item = {
-            ...item,
-            quantity: 1
-        }
-        const newCarrinho = [...addProduto, item]
-        setAddProduto(newCarrinho)
-        localStorage.setItem("carrinho", JSON.stringify(newCarrinho))
-    }
-}
 
   return (
     <div>
@@ -56,20 +35,24 @@ export default function BasicModal() {
         <BoxModal>
           <TypographyStyled >
             <h2>Selecione a quantidade desejada</h2>
-            <select>
+            <select onChange={e => setQuantity(e.target.value)} value={quantity}>
                 <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+                <option value={6}>6</option>
+                <option value={7}>7</option>
+                <option value={8}>8</option>
+                <option value={9}>9</option>
+                <option value={10}>10</option>
+
             </select>
-            <button>ADICIONAR AO CARRINHO</button>
+            <button onClick={() => {
+              add(item, quantity)
+              handleClose()
+            }}>ADICIONAR AO CARRINHO</button>
           </TypographyStyled>
         </BoxModal>
       </ModalStyled>

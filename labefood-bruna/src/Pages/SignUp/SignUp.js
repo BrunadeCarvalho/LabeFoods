@@ -5,18 +5,19 @@ import { CPFInput } from "../../Components/inputs/cpf"
 import { EmailInput } from "../../Components/inputs/email"
 import { NameInput } from "../../Components/inputs/name"
 import { PasswordInput } from "../../Components/inputs/password"
-import { BASE_URL, validarCPF, validarEmail, validarName, validarPassword } from "../../Constants"
+import { BASE_URL } from "../../Constants"
 import { useFormulario } from "../../Hook/formulario"
 import { DivFormulario, DivFundo } from "../Login/styled"
 import ImagemLogin from '../../img/logo-future-eats-invert@3x.png'
 import { BotaoLaranja } from "../../Components/Botoes/styled"
 import { ConfirmarInput } from "../../Components/inputs/Confirmar"
 import { toast } from "react-toastify"
+import { Header } from "../../Components/Header/Header"
+import { TituloPagina } from "../Cadastro/styled"
 
 
 export const SignUpPage=()=>{
     const navigate=useNavigate();
-
 
     // utilização do hook personalizado para formulário.
     const [form, onChangeInputs, limparInputs] = useFormulario ({
@@ -37,11 +38,11 @@ export const SignUpPage=()=>{
     const onSubmit = (event)=>{
         event.preventDefault();
         //regex:
-        setEmailValido(validarEmail(form.email))
+/*         setEmailValido(validarEmail(form.email))
         setPasswordValido(validarPassword(form.password))
         setNameValido(validarName(form.name))
         setCPFvalido(validarCPF(form.cpf))
-        setConfirmarValido(validarPassword(form.password))
+        setConfirmarValido(validarPassword(form.password)) */
 
         if(form.password === form.confirma){
 
@@ -50,7 +51,7 @@ export const SignUpPage=()=>{
             localStorage.setItem("token", response.data.token)
             navigate("/cadastro") 
         }).catch((error)=>{
-            toast.error('Usuário já cadastrado', {
+            toast.error('Usuário não cadastrado', {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -74,9 +75,10 @@ export const SignUpPage=()=>{
 
     return(
         <DivFundo>
+            <Header/>
             <img src={ImagemLogin} alt="logo"/>
             <DivFormulario>
-                <p> Cadastrar </p>
+                <TituloPagina> Cadastrar </TituloPagina>
                 <form onSubmit={onSubmit} >
                     <NameInput
                         value={form.name}

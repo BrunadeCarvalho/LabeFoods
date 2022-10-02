@@ -14,6 +14,8 @@ import { DivFormulario, DivFundo } from "../Login/styled"
 import {IoIosArrowBack} from 'react-icons/io'
 import { HeaderStyled } from "../../Components/Header/Styled"
 import { toast } from "react-toastify";
+import { Header } from "../../Components/Header/Header"
+import { TituloPagina } from "./styled"
 
 export const CadastroPage=()=>{
     const navigate=useNavigate()
@@ -61,11 +63,9 @@ export const CadastroPage=()=>{
     return(
         <DivFundo>
             <DivFormulario>
-                <HeaderStyled>
-                    <button onClick={voltar}> <IoIosArrowBack size="24px" /></button>
-                    <p>Endereço</p>
-                </HeaderStyled>
-                <form onSubmit={cadastrarEndereco}>
+                <Header/>
+                 <TituloPagina> Meu endereço </TituloPagina>
+                    <form onSubmit={cadastrarEndereco}>
                     <EnderecoInput 
                         value={form.street}
                         onChange={onChangeInputs}

@@ -5,7 +5,7 @@ import {BsEyeFill} from 'react-icons/bs'
 import {BsEyeSlashFill} from 'react-icons/bs'
 import { BoxContainer, Inputs } from '../styled';
 
-export const PasswordInput = ({validacao, value, onChange}) =>{
+export const PasswordInput = ({value, onChange}) =>{
     const [show, setShow] = useState(false)
     // definir se mostra ou não a senha:
     const handleClick = () => setShow(!show)
@@ -13,7 +13,7 @@ export const PasswordInput = ({validacao, value, onChange}) =>{
 
     
     return(
-        <BoxContainer validacao={!validacao}
+        <BoxContainer 
             component="form"
             sx={{
                 '& .MuiTextField-root': { m: 1, width: '328px'},
@@ -23,6 +23,8 @@ export const PasswordInput = ({validacao, value, onChange}) =>{
         >
             <Inputs
                 required
+                pattern="^.{6,}$" //padrão Regex
+                title="mínimo de 6 caracteres"
                 id="outlined-required" 
                 label="Senha" 
                 variant="outlined"            
@@ -33,9 +35,6 @@ export const PasswordInput = ({validacao, value, onChange}) =>{
                 placeholder="Mínimo 6 caracteres"
             />
             {show? <BsEyeFill size="20px" onClick={handleClick} className="icone" /> : <BsEyeSlashFill size="20px" onClick={handleClick} className="icone" />}
-            {!validacao ? (
-                <p> Sua senha deve ter pelo menos 6 caracteres</p>
-            ): undefined }
         </BoxContainer>
     )
 }

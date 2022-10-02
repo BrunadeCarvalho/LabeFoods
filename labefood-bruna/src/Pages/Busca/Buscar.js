@@ -1,11 +1,12 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Header } from "../../Components/Header/Header"
 import { BuscaInput } from "../../Components/inputs/busca/busca"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { useRequestData } from "../../Hook/useRequestData"
 import { goToResultadoPage } from "../../Routes/Coordinator"
 import { DivInformacaoRestaurante } from "../Feed/styled"
-import { DivCards, DivFundo, DivRenderizacao, } from "./styled"
+import { DivCards, DivFundo, DivRenderizacao, FundoBuscar, } from "./styled"
 
 export const BuscarPage=()=>{
     const navigate = useNavigate();
@@ -34,7 +35,10 @@ export const BuscarPage=()=>{
     })
 
     return(
-        <DivFundo>
+        <FundoBuscar>
+            <Header>
+                Busca
+            </Header>
                 <BuscaInput
                     value={busca}
                     onChange={(ev)=> setBuscar(ev.target.value)}
@@ -53,6 +57,6 @@ export const BuscarPage=()=>{
                 <p className="semResultado">Busque por nome de restaurante</p>
                 
                 }
-        </DivFundo>
+        </FundoBuscar>
     )
 }

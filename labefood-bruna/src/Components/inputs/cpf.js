@@ -1,5 +1,5 @@
-import TextField from '@mui/material/TextField';
 import { BoxContainer, Inputs } from '../styled';
+import { TextoValidacao } from './Styled';
 
 export const CPFInput = ({validacao, value, onChange}) =>{
     return(
@@ -18,10 +18,10 @@ export const CPFInput = ({validacao, value, onChange}) =>{
                 name="cpf"
                 value={value}
                 onChange={onChange}
-                placeholder="CPF"
+                placeholder="000.000.000-00"
             />
             {!validacao ? (
-                <p> Insira os 11 dígitos corretamente </p>
+                <TextoValidacao> Insira os 11 dígitos corretamente </TextoValidacao>
             ): undefined }
         </BoxContainer>
     )

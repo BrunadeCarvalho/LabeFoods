@@ -16,8 +16,6 @@ export const FooterComponents = () =>{
         goToMeuCarrinhoPage(navigate, id)
     }
     
-
-
     return(
     <Footer>
         <button onClick={()=> goToFeedPage(navigate)}> <AiOutlineHome size="27px"/> </button>

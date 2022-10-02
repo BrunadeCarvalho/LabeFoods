@@ -30,7 +30,6 @@ export const MeuPerfilPage=()=>{
         .then((response)=>{
             setIsLoading(false)
             setHistorico(response.data.orders)
-            localStorage.setItem("dados")
         })
     }
     useEffect(()=>{
@@ -54,7 +53,6 @@ export const MeuPerfilPage=()=>{
     const botaoSair=()=>{
         localStorage.removeItem("token");
         goToLoginPage(navigate)
-
     }
 
     return(

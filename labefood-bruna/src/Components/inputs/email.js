@@ -1,5 +1,5 @@
-import TextField from '@mui/material/TextField';
 import { BoxContainer, Inputs } from '../styled';
+import { TextoValidacao } from './Styled';
 
 export const EmailInput = ({validacao, value, onChange}) =>{
     return(
@@ -23,7 +23,7 @@ export const EmailInput = ({validacao, value, onChange}) =>{
                 placeholder="email@email.com"
             />
             {!validacao ? (
-                <p> E-mail inválido </p>
+                <TextoValidacao> E-mail inválido </TextoValidacao>
             ): undefined }
         </BoxContainer>
     )

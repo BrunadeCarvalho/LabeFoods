@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { EmailInput } from "../../Components/inputs/email"
 import { PasswordInput } from "../../Components/inputs/password"
-import { BASE_URL, validarEmail, validarPassword } from "../../Constants"
+import { BASE_URL/* , validarEmail, validarPassword */ } from "../../Constants"
 import { useFormulario } from "../../Hook/formulario"
 import { goToSignupPage } from "../../Routes/Coordinator"
 import { BotaoCadastrar, DivBotoes, DivFormulario, DivFundo } from "./styled"
@@ -28,9 +28,6 @@ export const LoginPage=()=>{
 
     const onSubbmit = (event)=>{
         event.preventDefault();
-        //regex:
-        setEmailValido(validarEmail(form.email))
-        setPasswordValido(validarPassword(form.password))
 
         axios.post(`${BASE_URL}/login`,form)
         .then((response)=>{

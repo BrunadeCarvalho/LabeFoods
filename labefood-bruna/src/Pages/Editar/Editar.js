@@ -11,6 +11,7 @@ import { EmailInput } from "../../Components/inputs/email"
 import { CPFInput } from "../../Components/inputs/cpf"
 import { BotaoLaranja } from "../../Components/Botoes/styled"
 import { toast } from "react-toastify";
+import { Header } from "../../Components/Header/Header"
 
 export const EditarPage=()=>{
     const navigate=useNavigate()
@@ -61,10 +62,9 @@ export const EditarPage=()=>{
 
     return(
         <DivFundo>
-            <HeaderStyled>
-                <button onClick={voltar}> <IoIosArrowBack size="24px" /></button>
-                <p>Editar</p>
-            </HeaderStyled>
+            <Header>
+                Editar
+            </Header>
             <form onSubmit={editarDados}>
                 <NameInput
                     value={form.name}

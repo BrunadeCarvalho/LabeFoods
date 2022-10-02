@@ -1,5 +1,29 @@
 import styled from "styled-components";
 
+
+export const FundoBuscar=styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    .semResultado{
+        width: 296px;
+        height: 18px;
+        opacity: 0.89;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        text-align: center;
+        color: #000;
+    }
+`
+
 export const DivFundo=styled.div`
     display: flex;
     flex-direction: column;
