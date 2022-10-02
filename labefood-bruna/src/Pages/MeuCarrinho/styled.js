@@ -1,5 +1,111 @@
 import styled from "styled-components";
 
+export const DetalhesProdutos=styled.div`
+    display: flex;
+    flex-direction: column;
+
+    span{
+        font-family: 'Roboto', sans-serif;
+        width: 198px;
+        height: 30px;
+        margin: 6px 0 0 16px;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.34px;
+        color: black;
+    }
+
+    .descricao{
+        font-family: 'Roboto', sans-serif;
+        width: 240px;
+        height: 30px;
+        margin: 6px 0 6px 16px;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.34px;
+        color: #b8b8b8;
+    }
+
+`
+
+export const PrecoBotaoStyled=styled.div`
+display: flex;
+    max-width: 97%;
+
+    span{
+        width: 108px;
+        height: 19px;
+        margin: 6px 0 15px 16px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        color: #000;
+    }
+
+    button{
+        width: 90px;
+        height: 31px;
+        margin: 7px 0 0 18px;
+        padding: 8px 20.5px 9px 21.5px;
+        border-top-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border: solid 1px #000;
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        letter-spacing: -0.29px;
+        text-align: center;
+        color: #000;
+        cursor: pointer;
+    }`
+
+export const TituloQuantidadeStyled=styled.div`
+    display: flex;
+    width: 231px;
+    flex-direction: row-reverse;
+
+    .quantidadeAdicionada{
+        width: 33px;
+        max-height: 33px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border: solid 1px var(--dark-peach);
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        text-align: center;
+        color: var(--dark-peach);
+        padding: 4px 0;
+        font-family: 'Roboto', sans-serif;
+
+    }
+
+    .nomeProduto{
+        width: 198px;
+        height: 18px;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        color: var(--dark-peach);  
+        margin: 14px 0 0 16px;
+    }
+`
+
 export const TextoCarrinho=styled.p`
     width: 296px;
     height: 18px;
@@ -148,6 +254,11 @@ export const Frete=styled.div`
         text-align: right;
         color: #000;
             }
+`
+export const MetodoDePagamentoStyled=styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5vh;
 `
 
 export const PagamentoStyled=styled.div`

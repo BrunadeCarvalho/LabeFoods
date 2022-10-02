@@ -1,9 +1,8 @@
-import TextField from '@mui/material/TextField';
 import { BoxContainer, Inputs } from '../styled';
 
-export const NameInput = ({validacao, value, onChange}) =>{
+export const NameInput = ({value, onChange}) =>{
     return(
-        <BoxContainer validacao={!validacao}
+        <BoxContainer 
             component="form"
             sx={{
                 '& .MuiTextField-root': { m: 1, width: '328px'},
@@ -21,9 +20,7 @@ export const NameInput = ({validacao, value, onChange}) =>{
                 onChange={onChange}
                 placeholder="Nome completo"
             />
-            {!validacao ? (
-                <p> Nome deve ter pelo menos 2 caracteres </p>
-            ): undefined }
+
         </BoxContainer>
     )
 }

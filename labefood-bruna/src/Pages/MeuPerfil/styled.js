@@ -62,7 +62,7 @@ export const FundoStyled=styled.div`
     align-items: center;
     max-width: 100vw;
     margin: auto;
-    
+    padding-bottom: 10vh;
     .meuPerfil{
         width: 360px;
         height: 19px;
@@ -147,8 +147,6 @@ export const DadosPessoais=styled.div`
 export const EnderecoStyled=styled.div`
     display: flex;
     flex-direction: row-reverse;
-    width: 360px;
-    height: 76px;
     background-color: #eee;
     margin-top:16px;
 
@@ -157,10 +155,11 @@ export const EnderecoStyled=styled.div`
 export const DivInformacoes=styled.div`
     display: flex;
     flex-direction: column;
-    margin: auto;
-    padding: 16px 0;
-    
-
+    width: 360px;
+    height: 76px;
+    background-color: #eee;
+    padding-top: 16px;
+    padding-bottom: 16px;
 
     .titulo{
         height: 18px;
@@ -172,6 +171,7 @@ export const DivInformacoes=styled.div`
         line-height: normal;
         letter-spacing: -0.39px;
         color: #b8b8b8;
+        margin: 0 16px;
     }
 
     .endereco{
@@ -182,8 +182,9 @@ export const DivInformacoes=styled.div`
         line-height: normal;
         letter-spacing: -0.39px;
         color: #000;
-        padding-top: 8px;
-        margin: auto;
+        margin: 8px 16px;
+        width: 340px;
+
     }
 `
 export const DivBotao=styled.div`

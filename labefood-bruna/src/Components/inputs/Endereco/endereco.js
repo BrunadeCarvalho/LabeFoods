@@ -15,7 +15,7 @@ export const EnderecoInput = ({validacao, value, onChange}) =>{
         <TextField
             required
             id="outlined-required" 
-            label="Logadouro" 
+            label="Logradouro" 
             variant="outlined"
             name="street"
             type="text"
