@@ -11,7 +11,7 @@ export const GlobalState = (props) =>{
     const [busca, setBuscar] = useState("")
     const [infoRestaurante, setInfoRestaurante]=useState(JSON.parse(localStorage.getItem("restaurante")) || ("") )
     const [detalhesRestaurante, setDetalhesRestaurante]=useState([])
-    const [dadosCliente, setDadosCliente]=useState/* (JSON.parse(localStorage.getItem("dados")) || */ ("") 
+    const [dadosCliente, setDadosCliente]=useState(JSON.parse(localStorage.getItem("dados")) || ("") )
     const [endereco, setEndereco]=useState([])
     const [pedidoEmAndamento, setPedidoEmAndamento]=useState([])
 
@@ -36,6 +36,7 @@ export const GlobalState = (props) =>{
         axios.get(`${BASE_URL}/profile`, headers)
         .then((response)=>{
             setDadosCliente(response.data.user)
+            localStorage.setItem("dados", JSON.stringify(response.data.user))
         })
     }
 

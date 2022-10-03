@@ -1,21 +1,19 @@
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { BASE_URL } from "../../Constants"
 import { useFormulario } from "../../Hook/formulario"
 import axios from "axios"
-import { HeaderStyled } from "../../Components/Header/Styled"
-import {IoIosArrowBack} from 'react-icons/io'
-import { DivFundo } from "../Login/styled"
 import { NameInput } from "../../Components/inputs/name"
 import { EmailInput } from "../../Components/inputs/email"
 import { CPFInput } from "../../Components/inputs/cpf"
 import { BotaoLaranja } from "../../Components/Botoes/styled"
 import { toast } from "react-toastify";
 import { Header } from "../../Components/Header/Header"
+import { FooterComponents } from "../../Components/Footer/Footer"
+import { DivFundoPaginaFooter } from "../../Components/FundoStyled/styled"
 
 export const EditarPage=()=>{
     const navigate=useNavigate()
-    const [form, onChangeInputs, limparInputs] = useFormulario ({
+    const [form, onChangeInputs] = useFormulario ({
         name:"",
         email:"",
         cpf:""
@@ -28,12 +26,9 @@ export const EditarPage=()=>{
         }
     }
 
-    const [endereco, setEndereco]=useState([])
-
     const editarDados = (event)=>{
         event.preventDefault();
         axios.put(`${BASE_URL}/profile`,form,headers).then((response)=>{
-            setEndereco()
             toast.success('Dados atualizado com sucesso', {
                 position: "top-center",
                 autoClose: 2000,
@@ -42,8 +37,10 @@ export const EditarPage=()=>{
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });              
-                navigate("/meu_perfil")
+            });              
+            navigate("/meu_perfil")
+            navigate(0)
+
         }).catch((error)=>{
             toast.error('Os dados não foram atualizados', {
                 position: "top-center",
@@ -53,15 +50,12 @@ export const EditarPage=()=>{
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });        })
-    }
-
-    const voltar=()=>{
-        navigate(-1)
+            });        
+        })
     }
 
     return(
-        <DivFundo>
+        <DivFundoPaginaFooter>
             <Header>
                 Editar
             </Header>
@@ -83,6 +77,7 @@ export const EditarPage=()=>{
                 />
                 <BotaoLaranja type="submit"> Salvar </BotaoLaranja>
             </form>
-        </DivFundo>
+            <FooterComponents />
+        </DivFundoPaginaFooter>
     )
 }

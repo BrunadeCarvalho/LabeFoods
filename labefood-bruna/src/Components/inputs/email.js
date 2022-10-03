@@ -1,5 +1,4 @@
 import { BoxContainer, Inputs } from '../styled';
-import { TextoValidacao } from './Styled';
 
 export const EmailInput = ({validacao, value, onChange}) =>{
     return(
@@ -23,7 +22,7 @@ export const EmailInput = ({validacao, value, onChange}) =>{
                 placeholder="email@email.com"
             />
             {!validacao ? (
-                <TextoValidacao> E-mail inválido </TextoValidacao>
+                undefined
             ): undefined }
         </BoxContainer>
     )

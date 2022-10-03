@@ -22,7 +22,7 @@ export const InformacaoProduto=styled.div`
     p{
         width: 166px;
         height: 18px;
-        margin: 18px 0 0 16px;
+        margin: 18px 0 0 6px;
         font-family: 'Roboto', sans-serif;
         font-size: 16px;
         font-weight: normal;
@@ -37,7 +37,7 @@ export const InformacaoProduto=styled.div`
         font-family: 'Roboto', sans-serif;
         width: 198px;
         height: 30px;
-        margin: 6px 0 0 16px;
+        margin: 6px 0 0 6px;
         font-family: Roboto;
         font-size: 14px;
         font-weight: normal;
@@ -130,7 +130,7 @@ export const Preco=styled.div`
     }
 `
 
-export const DivFundoResultado=styled.div`
+export const DivResultado=styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

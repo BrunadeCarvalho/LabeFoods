@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { EmailInput } from "../../Components/inputs/email"
 import { PasswordInput } from "../../Components/inputs/password"
-import { BASE_URL/* , validarEmail, validarPassword */ } from "../../Constants"
+import { BASE_URL} from "../../Constants"
 import { useFormulario } from "../../Hook/formulario"
 import { goToSignupPage } from "../../Routes/Coordinator"
 import { BotaoCadastrar, DivBotoes, DivFormulario, DivFundo } from "./styled"
@@ -17,7 +17,7 @@ export const LoginPage=()=>{
 
 
     // utilização do hook personalizado para formulário.
-    const [form, onChangeInputs, limparInputs] = useFormulario ({
+    const [form, onChangeInputs] = useFormulario ({
         email: "",
         password: ""
     })
@@ -33,6 +33,7 @@ export const LoginPage=()=>{
         .then((response)=>{
             localStorage.setItem("token", response.data.token)
             navigate("/feed")
+            navigate(0)
         }).catch((error)=>{
             toast.error('E-mail ou senha incorreto', {
                 position: "top-center",

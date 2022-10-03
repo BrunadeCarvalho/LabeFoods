@@ -2,7 +2,7 @@ import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { FooterComponents } from "../../Components/Footer/Footer"
 import { BASE_URL } from "../../Constants"
-import { BotaoEditar, DadosPessoais, DadosStyled, DivBotao, DivInformacoes, EnderecoStyled, FundoStyled, HistoricoPedidos, RenderizarHistorico } from "./styled"
+import { BotaoEditar, DadosPessoais, DadosStyled, DivBotao, DivInformacoes, EnderecoStyled, HistoricoPedidos, RenderizarHistorico } from "./styled"
 import {MdOutlineModeEdit} from  'react-icons/md'
 import { goToCadastroPage, goToEditarPage, goToLoginPage } from "../../Routes/Coordinator"
 import { useNavigate } from "react-router-dom"
@@ -11,6 +11,7 @@ import { HeaderStyled } from "../../Components/Header/Styled"
 import { CircularProgress } from "@mui/material";
 import Stack from '@mui/material/Stack';
 import { DivCarregando } from "../../Components/Cards/Style"
+import { DivFundoPaginaFooter } from "../../Components/FundoStyled/styled"
 
 export const MeuPerfilPage=()=>{
     const {dadosCliente, isLoading, setIsLoading }=useContext(GlobalStateContext)
@@ -54,11 +55,12 @@ export const MeuPerfilPage=()=>{
         localStorage.removeItem("token");
         localStorage.removeItem("restaurante");
         localStorage.removeItem("carrinho");
+        localStorage.removeItem("dados");
         goToLoginPage(navigate)
     }
 
     return(
-        <FundoStyled>
+        <DivFundoPaginaFooter>
             {isLoading ?
                 <DivCarregando>
                     <Stack sx={{ color: 'grey.500' }} spacing={1} direction="row">
@@ -70,7 +72,7 @@ export const MeuPerfilPage=()=>{
                 :
                 <>
                     <HeaderStyled>
-                        <h1 className="meuPerfil">Meu perfil</h1>
+                        <p>Meu perfil</p>
                         <button onClick={botaoSair}>sair</button>
                     </HeaderStyled>
                     <DadosStyled>
@@ -105,6 +107,6 @@ export const MeuPerfilPage=()=>{
                     <FooterComponents />
                 </>
             }               
-        </FundoStyled>
+        </DivFundoPaginaFooter>
     )
 }

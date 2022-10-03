@@ -10,12 +10,12 @@ import { EstadoInput } from "../../Components/inputs/Endereco/estado"
 import { NumeroInput } from "../../Components/inputs/Endereco/numero"
 import { BASE_URL } from "../../Constants"
 import { useFormulario } from "../../Hook/formulario"
-import { DivFormulario, DivFundo } from "../Login/styled"
-import {IoIosArrowBack} from 'react-icons/io'
-import { HeaderStyled } from "../../Components/Header/Styled"
+import { DivFormulario } from "../Login/styled"
 import { toast } from "react-toastify";
 import { Header } from "../../Components/Header/Header"
 import { TituloPagina } from "./styled"
+import { FooterComponents } from "../../Components/Footer/Footer"
+import { DivFundoPaginaFooter } from "../../Components/FundoStyled/styled"
 
 export const CadastroPage=()=>{
     const navigate=useNavigate()
@@ -42,7 +42,8 @@ export const CadastroPage=()=>{
         axios.put(`${BASE_URL}/address`,form,headers).then((response)=>{
             localStorage.setItem("token", response.data.token)
             setEndereco()          
-            navigate("/feed")
+            navigate("/meu_perfil")
+            navigate(0)
         }).catch((error)=>{
             toast.error(' * Dados obrigatórios', {
                 position: "top-center",
@@ -61,7 +62,7 @@ export const CadastroPage=()=>{
     }
 
     return(
-        <DivFundo>
+        <DivFundoPaginaFooter>
             <DivFormulario>
                 <Header/>
                  <TituloPagina> Meu endereço </TituloPagina>
@@ -105,6 +106,7 @@ export const CadastroPage=()=>{
 
                 </form>
             </DivFormulario>
-        </DivFundo>
+            <FooterComponents />
+        </DivFundoPaginaFooter>
     )
 }
