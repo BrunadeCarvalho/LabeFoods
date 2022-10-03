@@ -3,17 +3,15 @@ import { useContext, useEffect, useState, } from "react"
 import { useNavigate, useParams, } from "react-router-dom"
 import { BotaoLaranja } from "../../Components/Botoes/styled"
 import { CardItens } from "../../Components/Cards/Style"
-import {  FooterComponents } from "../../Components/Footer/Footer"
+import { FooterComponents } from "../../Components/Footer/Footer"
 import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { useRequestData } from "../../Hook/useRequestData"
-import { DadosRestaurante, DetalhesProdutos, DivFundoPaginaFooter, DivValorTotal, Frete, MetodoDePagamentoStyled, PagamentoStyled, PrecoBotaoStyled, TextoCarrinho, TituloQuantidadeStyled } from "./styled"
+import { DadosRestaurante, DetalhesProdutos, DivValorTotal, Frete, MetodoDePagamentoStyled, PagamentoStyled, PrecoBotaoStyled, TextoCarrinho, TituloQuantidadeStyled } from "./styled"
 import { toast } from "react-toastify";
-import { HeaderStyled } from "../../Components/Header/Styled"
-import {IoIosArrowBack} from 'react-icons/io'
 import { DivInformacoes } from "../MeuPerfil/styled"
 import { Header } from "../../Components/Header/Header"
-
+import { DivFundoPaginaFooter } from "../../Components/FundoStyled/styled"
 
 export const MeuCarrinhoPage=(props)=>{
     const [listaDeRestaurantes, isLoading, setIsLoading, ListaDeCategorias, obterRestaurantes] = useRequestData()
@@ -29,7 +27,6 @@ export const MeuCarrinhoPage=(props)=>{
     const [creditCard, setCreditCard] = useState(true)
     const [money, setMoney] = useState(false)
 
-    
     const handlePaymentMethod = () => {
         setCreditCard(!creditCard)
         setMoney(!money)
@@ -138,11 +135,6 @@ export const MeuCarrinhoPage=(props)=>{
                 });    }
     }
 
-    const voltar=()=>{
-        navigate(-1)
-    }
-
-
     return(
         <DivFundoPaginaFooter>
             <Header>
@@ -153,30 +145,30 @@ export const MeuCarrinhoPage=(props)=>{
                 <p className="endereco">{dadosCliente.address}</p>
             </DivInformacoes>
             {carrinho.length > 0 ?
-            <DadosRestaurante>
-                <img src={infoRestaurante?.logoUrl} alt={infoRestaurante?.name} />
-                <p className="estabelecimento">{infoRestaurante?.name}</p>
-                <p className="endereco">{infoRestaurante?.address}</p>
-                <p className="entrega">{infoRestaurante?.deliveryTime} min</p>
-            </DadosRestaurante>
-            :
-            undefined
+                <DadosRestaurante>
+                    <img src={infoRestaurante?.logoUrl} alt={infoRestaurante?.name} />
+                    <p className="estabelecimento">{infoRestaurante?.name}</p>
+                    <p className="endereco">{infoRestaurante?.address}</p>
+                    <p className="entrega">{infoRestaurante?.deliveryTime} min</p>
+                </DadosRestaurante>
+                :
+                undefined
             }
             {carrinho.length > 0 ?
-            <div>
-                {carrinho}
-            </div>
-            :
-            <TextoCarrinho>Carrinho vazio</TextoCarrinho>  
+                <div>
+                    {carrinho}
+                </div>
+                :
+                <TextoCarrinho>Carrinho vazio</TextoCarrinho>  
             }
             {carrinho.length > 0 ? 
-            <Frete>
-                <p className="valorFrete">  {Number(infoRestaurante.shipping).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </p>
-            </Frete>
-            :
-            <Frete>
-                <p className="valorFrete">Frete: R$ 0,00</p>
-            </Frete>
+                <Frete>
+                    <p className="valorFrete">  {Number(infoRestaurante.shipping).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </p>
+                </Frete>
+                :
+                <Frete>
+                    <p className="valorFrete">Frete: R$ 0,00</p>
+                </Frete>
             }
             <DivValorTotal>
                 <p className="subtotal">SUBTOTAL:</p> 

@@ -43,8 +43,6 @@ export const DivBotoes=styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
 `
 export const BotaoCadastrar=styled.button`
   width: 328px;

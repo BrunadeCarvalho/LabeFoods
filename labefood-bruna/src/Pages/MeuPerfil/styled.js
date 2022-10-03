@@ -53,16 +53,11 @@ export const RenderizarHistorico=styled.div`
 
     }
 `
-
-export const FundoStyled=styled.div`
+export const DadosStyled=styled.div`
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    max-width: 100vw;
-    margin: auto;
-    padding-bottom: 10vh;
+    flex-direction: row-reverse;
+    max-width: 360px;
+
     .meuPerfil{
         width: 360px;
         height: 19px;
@@ -119,12 +114,6 @@ export const FundoStyled=styled.div`
         letter-spacing: -0.39px;
         color: #000;
     }
-`
-
-export const DadosStyled=styled.div`
-    display: flex;
-    flex-direction: row-reverse;
-    max-width: 360px;
 `
 
 export const BotaoEditar=styled.div`

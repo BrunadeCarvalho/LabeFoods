@@ -1,5 +1,4 @@
 import { BoxContainer, Inputs } from '../styled';
-import { TextoValidacao } from './Styled';
 
 export const CPFInput = ({validacao, value, onChange}) =>{
     return(
@@ -21,7 +20,7 @@ export const CPFInput = ({validacao, value, onChange}) =>{
                 placeholder="000.000.000-00"
             />
             {!validacao ? (
-                <TextoValidacao> Insira os 11 dígitos corretamente </TextoValidacao>
+                undefined
             ): undefined }
         </BoxContainer>
     )

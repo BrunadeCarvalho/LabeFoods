@@ -1,12 +1,14 @@
-import { useContext, useState } from "react"
+import { useContext, } from "react"
 import { useNavigate } from "react-router-dom"
+import { FooterComponents } from "../../Components/Footer/Footer"
+import { DivFundoPaginaFooter } from "../../Components/FundoStyled/styled"
 import { Header } from "../../Components/Header/Header"
 import { BuscaInput } from "../../Components/inputs/busca/busca"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { useRequestData } from "../../Hook/useRequestData"
 import { goToResultadoPage } from "../../Routes/Coordinator"
 import { DivInformacaoRestaurante } from "../Feed/styled"
-import { DivCards, DivRenderizacao, FundoBuscar, } from "./styled"
+import { BuscarTextoStyled, DivCards, DivRenderizacao, } from "./styled"
 
 export const BuscarPage=()=>{
     const navigate = useNavigate();
@@ -37,7 +39,7 @@ export const BuscarPage=()=>{
     })
 
     return(
-        <FundoBuscar>
+        <DivFundoPaginaFooter>
             <Header>
                 Busca
             </Header>
@@ -52,12 +54,13 @@ export const BuscarPage=()=>{
                     {ResultadoBusca}
                 </div>
                 :
-                <p className="semResultado"> Não Encontramos :( </p>
+                <BuscarTextoStyled> Não Encontramos :( </BuscarTextoStyled>
                 }    
             </DivRenderizacao>
             :
-            <p className="semResultado">Busque por nome de restaurante</p>
+            <BuscarTextoStyled>Busque por nome de restaurante</BuscarTextoStyled>
             }
-        </FundoBuscar>
+            <FooterComponents />
+        </DivFundoPaginaFooter>
     )
 }

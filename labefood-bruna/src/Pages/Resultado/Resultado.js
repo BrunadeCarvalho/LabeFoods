@@ -5,12 +5,13 @@ import { BASE_URL } from "../../Constants"
 import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { CircularProgress } from "@mui/material";
 import Stack from '@mui/material/Stack';
-import { CardItens, CardRestaurante, DivCarregando, DivFundoResultado, InformacaoProduto, Preco } from "../../Components/Cards/Style"
+import { CardItens, CardRestaurante, DivCarregando, InformacaoProduto, Preco } from "../../Components/Cards/Style"
 import * as React from 'react';
 import { FooterComponents } from "../../Components/Footer/Footer"
 import BasicModal from "../../Components/Modal/Modal"
 import { toast } from "react-toastify"
 import { Header } from "../../Components/Header/Header"
+import { DivFundoPaginaFooter } from "../../Components/FundoStyled/styled"
 
 export const Resultado=()=>{
     const {addProduto, setAddProduto, isLoading, setIsLoading, setInfoRestaurante, infoRestaurante, detalhesRestaurante, setDetalhesRestaurante}=useContext(GlobalStateContext)
@@ -176,7 +177,7 @@ export const Resultado=()=>{
     })
 
     return(
-        <DivFundoResultado>
+        <DivFundoPaginaFooter>
             <Header>
                 Restaurante
             </Header>
@@ -198,7 +199,7 @@ export const Resultado=()=>{
                         <span className="tempo">{infoRestaurante?.deliveryTime} min</span>
                         <span className="delivery">{Number(infoRestaurante.shipping).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
                     </div>
-                        <span className="endereco"> {infoRestaurante?.address} </span>
+                    <span className="endereco"> {infoRestaurante?.address} </span>
                 </CardRestaurante>
                 <div>
                     <h6>Principais</h6>
@@ -206,12 +207,12 @@ export const Resultado=()=>{
                 </div>
 
                 {resultadoAcompanhamento.length > 0 ?
-                <div>
-                    <h6>Acompanhamentos</h6>
-                    {resultadoAcompanhamento}
-                </div>
-                :
-                undefined
+                    <div>
+                        <h6>Acompanhamentos</h6>
+                        {resultadoAcompanhamento}
+                    </div>
+                    :
+                    undefined
                 }
 
                 <div>
@@ -220,16 +221,16 @@ export const Resultado=()=>{
                 </div>
 
                 {resultadoSobremesa.length > 0 ?
-                <div>
-                    <h6>Sobremesa</h6>
-                    {resultadoSobremesa}
-                </div>
-                :
-                undefined
+                    <div>
+                        <h6>Sobremesa</h6>
+                        {resultadoSobremesa}
+                    </div>
+                    :
+                    undefined
                 }
             </>
             }
             <FooterComponents />
-        </DivFundoResultado>
+        </DivFundoPaginaFooter>
     )
 }
