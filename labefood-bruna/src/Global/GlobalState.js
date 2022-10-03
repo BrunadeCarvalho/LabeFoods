@@ -2,8 +2,7 @@ import { useEffect, useState } from "react"
 import { BASE_URL } from "../Constants"
 import { GlobalStateContext } from "./GlobalStateContext"
 import axios from "axios"
-import { useFormulario } from "../Hook/formulario"
-import { useNavigate } from "react-router-dom"
+
 
 
 export const GlobalState = (props) =>{
@@ -12,18 +11,16 @@ export const GlobalState = (props) =>{
     const [busca, setBuscar] = useState("")
     const [infoRestaurante, setInfoRestaurante]=useState(JSON.parse(localStorage.getItem("restaurante")) || ("") )
     const [detalhesRestaurante, setDetalhesRestaurante]=useState([])
-    const [dadosCliente, setDadosCliente]=useState(JSON.parse(localStorage.getItem("dados")) || ("") )
+    const [dadosCliente, setDadosCliente]=useState/* (JSON.parse(localStorage.getItem("dados")) || */ ("") 
     const [endereco, setEndereco]=useState([])
     const [pedidoEmAndamento, setPedidoEmAndamento]=useState([])
 
-    
     const token = localStorage.getItem("token")
     const headers={
         headers:{
             auth: token
         }
     }
-
 
     //PEDIDO EM ANDAMENTO:
     const pedidoAtual = () => {

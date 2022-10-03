@@ -52,6 +52,8 @@ export const MeuPerfilPage=()=>{
 
     const botaoSair=()=>{
         localStorage.removeItem("token");
+        localStorage.removeItem("restaurante");
+        localStorage.removeItem("carrinho");
         goToLoginPage(navigate)
     }
 
@@ -67,41 +69,41 @@ export const MeuPerfilPage=()=>{
                 </DivCarregando>
                 :
                 <>
-                <HeaderStyled>
-                    <h1 className="meuPerfil">Meu perfil</h1>
-                    <button onClick={botaoSair}>sair</button>
-                </HeaderStyled>
-                <DadosStyled>
-                    <BotaoEditar>
-                        <button onClick={()=>goToEditarPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
-                    </BotaoEditar>
-                    <DadosPessoais>
-                        <p className="nome">{dadosCliente.name}</p>
-                        <p className="email">{dadosCliente.email}</p>
-                        <p className="cpf">{dadosCliente.cpf}</p>
-                    </DadosPessoais>
-                </DadosStyled>
-                <EnderecoStyled>
-                    <DivBotao>
-                        <button onClick={()=>goToCadastroPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
-                    </DivBotao>
-                    <DivInformacoes>
-                        <span className="titulo">Endereço cadastrado:</span>
-                        <p className="endereco">{dadosCliente.address}</p>
-                    </DivInformacoes>
-                </EnderecoStyled>
-                <HistoricoPedidos>
-                    <div>
-                        <p className="tituloHistorico">Historico de Pedidos</p>
-                        {renderizarPedidos.length >0 ?
-                        <p>{renderizarPedidos}</p>
-                        :
-                        <p className="pedido">Você não realizou nenhum pedido</p>
-                        }
-                    </div>
-                </HistoricoPedidos>
-                <FooterComponents />
-            </>
+                    <HeaderStyled>
+                        <h1 className="meuPerfil">Meu perfil</h1>
+                        <button onClick={botaoSair}>sair</button>
+                    </HeaderStyled>
+                    <DadosStyled>
+                        <BotaoEditar>
+                            <button onClick={()=>goToEditarPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
+                        </BotaoEditar>
+                        <DadosPessoais>
+                            <p className="nome">{dadosCliente.name}</p>
+                            <p className="email">{dadosCliente.email}</p>
+                            <p className="cpf">{dadosCliente.cpf}</p>
+                        </DadosPessoais>
+                    </DadosStyled>
+                    <EnderecoStyled>
+                        <DivBotao>
+                            <button onClick={()=>goToCadastroPage(navigate)}> <MdOutlineModeEdit size="24px" /> </button>
+                        </DivBotao>
+                        <DivInformacoes>
+                            <span className="titulo">Endereço cadastrado:</span>
+                            <p className="endereco">{dadosCliente.address}</p>
+                        </DivInformacoes>
+                    </EnderecoStyled>
+                    <HistoricoPedidos>
+                        <div>
+                            <p className="tituloHistorico">Historico de Pedidos</p>
+                            {renderizarPedidos.length >0 ?
+                            <p>{renderizarPedidos}</p>
+                            :
+                            <p className="pedido">Você não realizou nenhum pedido</p>
+                            }
+                        </div>
+                    </HistoricoPedidos>
+                    <FooterComponents />
+                </>
             }               
         </FundoStyled>
     )

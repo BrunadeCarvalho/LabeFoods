@@ -11,6 +11,9 @@ export const HeaderStyled=styled.header`
         background-color: transparent;
         border: none;
         cursor: pointer;
+        :hover{
+            color: var(--dark-peach);
+        }
     }
 
     p{

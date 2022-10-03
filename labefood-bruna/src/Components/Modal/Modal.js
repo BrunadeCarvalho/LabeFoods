@@ -20,10 +20,9 @@ const style = {
 
 export default function BasicModal({item, add}) {
   const [open, setOpen] = useState(false);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const {addProduto, setAddProduto }=useContext(GlobalStateContext)
 
   return (
     <div>
@@ -36,7 +35,7 @@ export default function BasicModal({item, add}) {
           <TypographyStyled >
             <h2>Selecione a quantidade desejada</h2>
             <select onChange={e => setQuantity(e.target.value)} value={quantity}>
-                <option>0</option>
+                <option disabled type="Select" value={""}>0</option>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
                 <option value={3}>3</option>

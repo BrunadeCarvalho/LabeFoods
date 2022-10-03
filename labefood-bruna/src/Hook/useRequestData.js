@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import { BASE_URL } from "../Constants"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { goToLoginPage } from "../Routes/Coordinator"
 
 
@@ -31,6 +31,7 @@ export const useRequestData=()=>{
             goToLoginPage(navigate)
         )
     }
+
     useEffect(()=>{
         obterRestaurantes()
     }, [])

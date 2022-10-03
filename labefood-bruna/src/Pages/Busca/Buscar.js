@@ -6,13 +6,15 @@ import { GlobalStateContext } from "../../Global/GlobalStateContext"
 import { useRequestData } from "../../Hook/useRequestData"
 import { goToResultadoPage } from "../../Routes/Coordinator"
 import { DivInformacaoRestaurante } from "../Feed/styled"
-import { DivCards, DivFundo, DivRenderizacao, FundoBuscar, } from "./styled"
+import { DivCards, DivRenderizacao, FundoBuscar, } from "./styled"
 
 export const BuscarPage=()=>{
     const navigate = useNavigate();
 
     const [listaDeRestaurantes, isLoading] = useRequestData()
     const {busca, setBuscar} = useContext(GlobalStateContext)
+
+    console.log(listaDeRestaurantes)
 
     const onClickCard=(id) =>{
         goToResultadoPage(navigate, id)
@@ -39,24 +41,23 @@ export const BuscarPage=()=>{
             <Header>
                 Busca
             </Header>
-                <BuscaInput
-                    value={busca}
-                    onChange={(ev)=> setBuscar(ev.target.value)}
-                />
-                {busca.length > 0 ?
-                <DivRenderizacao>
-                    {ResultadoBusca.length > 0 ?
-                    <div>
-                        {ResultadoBusca}
-                    </div>
-                    :
-                    <p className="semResultado"> Não Encontramos :( </p>
-                    }    
-                </DivRenderizacao>
+            <BuscaInput
+                value={busca}
+                onChange={event=> setBuscar(event.target.value)}
+            />
+            {busca.length > 0 ?
+            <DivRenderizacao>
+                {ResultadoBusca.length > 0 ?
+                <div>
+                    {ResultadoBusca}
+                </div>
                 :
-                <p className="semResultado">Busque por nome de restaurante</p>
-                
-                }
+                <p className="semResultado"> Não Encontramos :( </p>
+                }    
+            </DivRenderizacao>
+            :
+            <p className="semResultado">Busque por nome de restaurante</p>
+            }
         </FundoBuscar>
     )
 }

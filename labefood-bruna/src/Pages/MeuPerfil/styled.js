@@ -134,14 +134,16 @@ export const BotaoEditar=styled.div`
         background-color: transparent;
         border: none;
         cursor: pointer;
-        margin-right: 20px;
+        :hover{
+            color: var(--dark-peach);
+        }
     }
 `
 
 export const DadosPessoais=styled.div`
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: 360px;
 `
 
 export const EnderecoStyled=styled.div`
@@ -199,6 +201,9 @@ export const DivBotao=styled.div`
         display: flex;
         align-items: center;
         cursor: pointer;
+        :hover{
+            color: var(--dark-peach);
+        }
     }
 `
 

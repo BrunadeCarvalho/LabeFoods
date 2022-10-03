@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const CardItens=styled.div`
-  width: 328px;
-  height: 112px;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  border: solid 1px #b8b8b8;
-  display: flex;
+    width: 328px;
+    height: 112px;
+    margin: 17px 16px 12px;
+    border: 1px solid #b8b8b8;
+    border-radius: 8px;
+    display: flex;
 
     img{
         width: 97px;
@@ -126,6 +126,7 @@ export const Preco=styled.div`
         text-align: center;
         color: #000;
         cursor: pointer;
+        
     }
 `
 

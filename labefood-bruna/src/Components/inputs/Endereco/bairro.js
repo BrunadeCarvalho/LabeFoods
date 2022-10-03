@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export const BairroInput = ({validacao, value, onChange}) =>{
+export const BairroInput = ({value, onChange}) =>{
     return(
-        <Box validacao={!validacao}
+        <Box
             component="form"
             sx={{
                 '& .MuiTextField-root': { m: 1, width: '328px'},
@@ -21,10 +21,8 @@ export const BairroInput = ({validacao, value, onChange}) =>{
                 value={value}
                 onChange={onChange}
                 placeholder="Bairro"
+                minLength={2}
             />
-{/*             {!validacao ? (
-                <p> E-mail inválido </p>
-            ): undefined } */}
         </Box>
     )
 }

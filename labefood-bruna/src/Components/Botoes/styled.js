@@ -19,4 +19,9 @@ export const BotaoLaranja=styled.button`
   cursor: pointer;
   margin: 8px 0 16px 8px;
 
+  :hover{
+    -webkit-transform: scale(1);
+      transform: scale(1.05);
+      font-size: 17px;
+  }
 `
