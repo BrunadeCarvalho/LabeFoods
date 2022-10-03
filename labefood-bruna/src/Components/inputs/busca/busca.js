@@ -25,8 +25,6 @@ export const BuscaInput = () =>{
             </DivCards>
         )
     })
-
-
     
     return(
         <BoxBuscar 
@@ -51,9 +49,6 @@ export const BuscaInput = () =>{
                 }
                 placeholder="Restaurante"
             />
-{/*             {!validacao ? (
-                <p> E-mail inválido </p>
-            ): undefined } */}
         </BoxBuscar>
     )
 }

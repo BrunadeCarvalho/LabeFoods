@@ -42,9 +42,9 @@ export const CadastroPage=()=>{
         axios.put(`${BASE_URL}/address`,form,headers).then((response)=>{
             localStorage.setItem("token", response.data.token)
             setEndereco()          
-            navigate("/meu_perfil")
+            navigate("/feed")
         }).catch((error)=>{
-            toast.error('Endereço não cadastrado', {
+            toast.error(' * Dados obrigatórios', {
                 position: "top-center",
                 autoClose: 2000,
                 hideProgressBar: false,

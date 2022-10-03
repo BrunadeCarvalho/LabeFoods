@@ -54,8 +54,7 @@ export const Resultado=()=>{
             setIsLoading(false)
             setInfoRestaurante(response.data.restaurant)
             setDetalhesRestaurante(response.data.restaurant.products)
-            localStorage.setItem("restaurante", JSON.stringify(response.data.restaurant)
-            )
+            localStorage.setItem("restaurante", JSON.stringify(response.data.restaurant))
         }).catch((error)=>{
             navigate("/")
         })
@@ -67,8 +66,8 @@ export const Resultado=()=>{
 
      detalhesRestaurante.map((item, index)=>{
         return (
-            <>
-            </>
+            <div key={index}>
+            </div>
         )
     })
 

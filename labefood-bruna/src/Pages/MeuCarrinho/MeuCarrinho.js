@@ -67,9 +67,6 @@ export const MeuCarrinhoPage=(props)=>{
     })
 
     let valorFrete = Number(infoRestaurante.shipping)
-
-    let valorFreteRenderizado = Number(infoRestaurante.shipping).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-
     useEffect(()=>{
 
         let valorFinal = 0
@@ -114,7 +111,9 @@ export const MeuCarrinhoPage=(props)=>{
                     draggable: true,
                     progress: undefined,
                 });
+                //após o pedido ser confirmado o carrinho irá atualizar e remover os itens.
                 localStorage.removeItem("carrinho");
+                navigate(0)
                 
             }).catch((error)=>{
                 toast.error('Aguarde seu outro pedido ser finalizado.', {
