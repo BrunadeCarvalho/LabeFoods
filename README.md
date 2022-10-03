@@ -1,6 +1,6 @@
 <h1 align="center">🍔 LabeFood - Site para pedidos de comida</h1>
 
-<p>Projeto final do curso de Desenvolvimento Web Front End da Labenu.</p>
+<p align="center">Projeto final do curso de Desenvolvimento Web Front End da Labenu.</p>
 
 <h2>O que funciona no projeto:</h2>
 
